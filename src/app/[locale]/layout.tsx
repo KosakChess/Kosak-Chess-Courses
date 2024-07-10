@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 
 import { cn } from '@/lib/utils';
+import { locales } from '@/navigation';
 
-import './globals.css';
+import '../globals.css';
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -12,6 +13,8 @@ const poppins = Poppins({
 	variable: '--font-poppins',
 });
 
+export const generateStaticParams = () => locales.map((locale) => ({ locale }));
+
 export const metadata: Metadata = {
 	title: 'Kosak Chess',
 	description: 'Chess courses, lessons, and resources for all levels of play.',
@@ -19,11 +22,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
 	children,
-}: Readonly<{
+	params,
+}: {
 	children: React.ReactNode;
-}>) {
+	params: { locale: string };
+}) {
 	return (
-		<html lang="en">
+		<html lang={params.locale}>
 			<body className={cn('flex min-h-screen flex-col', poppins.className)}>
 				<main className="flex-grow">{children}</main>
 			</body>
