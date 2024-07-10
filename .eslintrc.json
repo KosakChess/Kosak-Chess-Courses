@@ -67,7 +67,7 @@
 	},
 	"overrides": [
 		{
-			"files": ["src/app/**/*.ts?(x)"],
+			"files": ["src/app/**/*.ts?(x)", "tailwind.config.ts", "middleware.ts", "src/i18n.ts"],
 			"rules": {
 				"import/no-default-export": "off"
 			}
@@ -92,5 +92,5 @@
 			}
 		}
 	],
-	"ignorePatterns": ["*.js", "*.jsx"]
+	"ignorePatterns": ["*.js", "*.jsx", "*.mjs"]
 }
