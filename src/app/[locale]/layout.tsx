@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 import { Footer } from '@/components/layout/footer';
 import { Header } from '@/components/layout/header';
@@ -30,6 +31,8 @@ export default function RootLayout({
 	children: React.ReactNode;
 	params: { locale: string };
 }) {
+	unstable_setRequestLocale(params.locale);
+
 	return (
 		<html lang={params.locale} suppressHydrationWarning>
 			<body
