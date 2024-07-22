@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 
+import { Footer } from '@/components/layout/footer';
+import { Header } from '@/components/layout/header';
 import { cn } from '@/lib/utils';
 import { locales } from '@/navigation';
+import { ThemeProvider } from '@/providers/themeProvider';
 
 import '../globals.css';
 
@@ -28,9 +31,18 @@ export default function RootLayout({
 	params: { locale: string };
 }) {
 	return (
-		<html lang={params.locale}>
-			<body className={cn('flex min-h-screen flex-col', poppins.className)}>
-				<main className="flex-grow">{children}</main>
+		<html lang={params.locale} suppressHydrationWarning>
+			<body
+				className={cn(
+					'flex min-h-screen flex-col overflow-x-hidden bg-background text-foreground antialiased',
+					poppins.className,
+				)}
+			>
+				<ThemeProvider>
+					<Header />
+					<main className="flex-1">{children}</main>
+					<Footer />
+				</ThemeProvider>
 			</body>
 		</html>
 	);
