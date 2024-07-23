@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const ThemeProvider = ({ children }: Props) => (
-	<NextThemesProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
+	<NextThemesProvider attribute="class" defaultTheme="dark" disableTransitionOnChange enableSystem>
 		{children}
 	</NextThemesProvider>
 );
