@@ -1,6 +1,47 @@
 {
-	"Contact": {
-		"title": "Contact",
-		"description": "Contact us"
+	"components": {
+		"layout": {
+			"header": {
+				"routes": {
+					"courses": "Courses",
+					"articles": "Articles",
+					"about": "About",
+					"contact": "Contact"
+				},
+				"mobileNav": {
+					"open": "Open navigation",
+					"title": "Mobile navigation",
+					"description": "Go to the page with courses, articles, about or contact."
+				},
+				"LanguageSelector": {
+					"label": "Choose language",
+					"options": {
+						"en": "English",
+						"pl": "Polski"
+					}
+				},
+				"ThemeToggle": {
+					"label": "Toggle theme"
+				},
+				"signInLink": {
+					"label": "Sign in"
+				}
+			},
+			"footer": {
+				"header": "Footer",
+				"navHeader": "Bottom navigation",
+				"copyright": "All rights reserved.",
+				"routes": {
+					"home": "Home",
+					"courses": "Courses",
+					"articles": "Articles",
+					"about": "About",
+					"contact": "Contact",
+					"privacyPolicy": "Privacy Policy",
+					"termsOfService": "Terms",
+					"cookies": "Cookies"
+				}
+			}
+		}
 	}
 }

@@ -1,6 +1,47 @@
 {
-	"Contact": {
-		"title": "Kontakt",
-		"description": "Skontaktuj się z nami"
+	"components": {
+		"layout": {
+			"header": {
+				"routes": {
+					"courses": "Kursy",
+					"articles": "Artykuły",
+					"about": "O mnie",
+					"contact": "Kontakt"
+				},
+				"mobileNav": {
+					"open": "Otwórz nawigację",
+					"title": "Nawigacja mobilna",
+					"description": "Przejdź na stronę z kursami, artykułami, o mnie lub kontakt."
+				},
+				"LanguageSelector": {
+					"label": "Wybierz język",
+					"options": {
+						"en": "English",
+						"pl": "Polski"
+					}
+				},
+				"ThemeToggle": {
+					"label": "Przełącz motyw"
+				},
+				"signInLink": {
+					"label": "Zaloguj się"
+				}
+			},
+			"footer": {
+				"header": "Stopka",
+				"navHeader": "Nawigacja dolna",
+				"copyright": "Wszelkie prawa zastrzeżone.",
+				"routes": {
+					"home": "Strona główna",
+					"courses": "Kursy",
+					"articles": "Artykuły",
+					"about": "O mnie",
+					"contact": "Kontakt",
+					"privacyPolicy": "Prywatność",
+					"termsOfService": "Warunki",
+					"cookies": "Ciasteczka"
+				}
+			}
+		}
 	}
 }
