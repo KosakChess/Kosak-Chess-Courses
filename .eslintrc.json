@@ -41,6 +41,7 @@
 		"@typescript-eslint/no-empty-interface": "off",
 		"@typescript-eslint/no-empty-function": "off",
 		"@typescript-eslint/require-await": "off",
+		"@typescript-eslint/return-await": ["error", "in-try-catch"],
 		"@typescript-eslint/no-unused-vars": [
 			"error",
 			{ "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
@@ -67,7 +68,7 @@
 	},
 	"overrides": [
 		{
-			"files": ["src/app/**/*.ts?(x)"],
+			"files": ["src/app/**/*.ts?(x)", "tailwind.config.ts", "middleware.ts", "src/i18n.ts"],
 			"rules": {
 				"import/no-default-export": "off"
 			}
@@ -92,5 +93,5 @@
 			}
 		}
 	],
-	"ignorePatterns": ["*.js", "*.jsx"]
+	"ignorePatterns": ["*.js", "*.jsx", "*.mjs"]
 }

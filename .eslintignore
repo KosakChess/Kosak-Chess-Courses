@@ -2,4 +2,3 @@
 next-env.d.ts
 node_modules
 package-lock.json
-tailwind.config.ts
