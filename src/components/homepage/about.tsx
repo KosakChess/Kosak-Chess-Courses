@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import NextImage from 'next/image';
 import { useTranslations } from 'next-intl';
 
-import about from '@/assets/about.jpg';
+import about from '@/assets/about.png';
 
 import { Button } from '../ui/button';
 
@@ -20,7 +20,7 @@ export const About = () => {
 					<pattern
 						x="50%"
 						y={-1}
-						id="983e3e4c-de6d-4c3f-8d64-b9761d1534cc"
+						id="pattern-bg"
 						width={200}
 						height={200}
 						patternUnits="userSpaceOnUse"
@@ -34,12 +34,7 @@ export const About = () => {
 						strokeWidth={0}
 					/>
 				</svg>
-				<rect
-					fill="url(#983e3e4c-de6d-4c3f-8d64-b9761d1534cc)"
-					width="100%"
-					height="100%"
-					strokeWidth={0}
-				/>
+				<rect fill="url(#pattern-bg)" width="100%" height="100%" strokeWidth={0} />
 			</svg>
 			<div
 				aria-hidden
@@ -55,9 +50,7 @@ export const About = () => {
 			</div>
 			<div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:flex lg:px-8 lg:py-32">
 				<div className="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl lg:pt-8">
-					<h2 className="text-red mt-10 text-3xl font-bold tracking-tight sm:text-6xl">
-						{t('header')}
-					</h2>
+					<h2 className="text-red text-3xl font-bold tracking-tight sm:text-6xl">{t('header')}</h2>
 					<p className="mt-6 text-justify text-lg leading-8">{t('description')}</p>
 					<div className="mt-10 flex items-center gap-x-6">
 						<Button href="/about">{t('cta.continueReading')}</Button>
@@ -66,13 +59,13 @@ export const About = () => {
 						</Button>
 					</div>
 				</div>
-				<div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
-					<div className="max-w-xl flex-none sm:max-w-3xl lg:max-w-5xl">
+				<div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
+					<div className="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
 						<NextImage
 							alt="Jakub Kosakowski"
 							src={about}
 							placeholder="blur"
-							className="rounded-md bg-white/5 object-cover shadow-2xl ring-1 ring-white/10"
+							className="object-cover"
 						/>
 					</div>
 				</div>

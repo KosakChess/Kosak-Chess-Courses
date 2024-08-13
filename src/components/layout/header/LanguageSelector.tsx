@@ -38,12 +38,12 @@ export const LanguageSelector = () => {
 			<DropdownMenuContent align="end">
 				<DropdownMenuLabel className="sr-only">{t('label')}</DropdownMenuLabel>
 				<DropdownMenuCheckboxItem checked={locale === 'en'}>
-					<Link href={pathname} locale="en">
+					<Link href={pathname} locale="en" scroll={false}>
 						{t('options.en')}
 					</Link>
 				</DropdownMenuCheckboxItem>
 				<DropdownMenuCheckboxItem checked={locale === 'pl'}>
-					<Link href={pathname} locale="pl">
+					<Link href={pathname} locale="pl" scroll={false}>
 						{t('options.pl')}
 					</Link>
 				</DropdownMenuCheckboxItem>

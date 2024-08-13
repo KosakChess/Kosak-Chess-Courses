@@ -41,7 +41,7 @@ export const Footer = () => {
 					))}
 				</div>
 				<p className="text-center text-xs leading-5">
-					&copy; {new Date().getFullYear()} Kosak Chess. {t('copyright')}
+					&copy; {new Date().getFullYear()} KosakChess. {t('copyright')}
 				</p>
 			</div>
 		</footer>
