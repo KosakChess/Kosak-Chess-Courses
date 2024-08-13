@@ -6,7 +6,7 @@ import { Footer } from '@/components/layout/footer';
 import { Header } from '@/components/layout/header';
 import { cn } from '@/lib/utils';
 import { locales } from '@/navigation';
-import { ThemeProvider } from '@/providers/themeProvider';
+import { ThemeProvider } from '@/providers/theme-provider';
 
 import '../globals.css';
 

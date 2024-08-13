@@ -1,11 +1,11 @@
 import { useTranslations } from 'next-intl';
 
-import { Discord } from '@/components/icons/Discord';
-import { Facebook } from '@/components/icons/Facebook';
-import { Youtube } from '@/components/icons/Youtube';
+import { Discord } from '@/components/icons/discord';
+import { Facebook } from '@/components/icons/facebook';
+import { Youtube } from '@/components/icons/youtube';
 
-import { FooterNav } from './FooterNav';
-import { SocialLink } from './SocialLink';
+import { FooterNav } from './footer-nav';
+import { SocialLink } from './social-link';
 
 const socialLinks = [
 	{

@@ -1,7 +1,7 @@
 import { type Route } from 'next';
 import { useTranslations } from 'next-intl';
 
-import { ActiveLink } from '@/components/shared/ActiveLink';
+import { ActiveLink } from '@/components/shared/active-link';
 
 export const FooterNav = () => {
 	const t = useTranslations('components.layout.footer');

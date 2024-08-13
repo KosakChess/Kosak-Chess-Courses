@@ -1,8 +1,8 @@
 import { unstable_setRequestLocale } from 'next-intl/server';
 
-import { About } from '@/components/homepage/about';
-import { Features } from '@/components/homepage/features';
-import { Hero } from '@/components/homepage/hero';
+import { About } from './components/about';
+import { Features } from './components/features';
+import { Hero } from './components/hero';
 
 export default function HomePage({ params }: { params: { locale: string } }) {
 	unstable_setRequestLocale(params.locale);

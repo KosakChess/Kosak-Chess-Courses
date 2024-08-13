@@ -3,9 +3,9 @@ import { ArrowRight } from 'lucide-react';
 import NextImage from 'next/image';
 import { useTranslations } from 'next-intl';
 
-import hero from '@/assets/hero.webp';
+import { Button } from '@/components/ui/button';
 
-import { Button } from '../ui/button';
+import hero from '../assets/hero.webp';
 
 export const Hero = () => {
 	const t = useTranslations('components.homepage.hero');

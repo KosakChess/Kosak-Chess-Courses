@@ -3,9 +3,9 @@ import { ArrowRight } from 'lucide-react';
 import NextImage from 'next/image';
 import { useTranslations } from 'next-intl';
 
-import about from '@/assets/about.png';
+import { Button } from '@/components/ui/button';
 
-import { Button } from '../ui/button';
+import about from '../assets/about.png';
 
 export const About = () => {
 	const t = useTranslations('components.homepage.about');

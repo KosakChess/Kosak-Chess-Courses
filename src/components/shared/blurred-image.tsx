@@ -1,6 +1,6 @@
 import NextImage, { type ImageProps } from 'next/image';
 
-import { getBase64 } from '@/lib/getBase64';
+import { getBase64 } from '@/lib/get-base64';
 
 interface Props extends ImageProps {
 	src: string;

@@ -2,10 +2,10 @@ import { pick } from 'lodash';
 
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 
-import { Logo } from '@/components/shared/Logo';
+import { Logo } from '@/components/shared/logo';
 
-import { HeaderActions } from './HeaderActions';
-import { Navigation } from './Navigation';
+import { HeaderActions } from './header-actions';
+import { Navigation } from './navigation';
 
 export const Header = () => {
 	const messages = useMessages();

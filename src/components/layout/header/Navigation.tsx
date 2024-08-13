@@ -5,7 +5,7 @@ import { Menu } from 'lucide-react';
 import { type Route } from 'next';
 import { useTranslations } from 'next-intl';
 
-import { IconButton } from '@/components/shared/IconButton';
+import { IconButton } from '@/components/shared/icon-button';
 import { Button } from '@/components/ui/button';
 import {
 	Sheet,
@@ -15,9 +15,9 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from '@/components/ui/sheet';
-import { useMedia } from '@/hooks/useMedia';
+import { useMedia } from '@/hooks/use-media';
 
-import { NavigationLink } from './NavigationLink';
+import { NavigationLink } from './navigation-link';
 
 export const Navigation = () => {
 	const t = useTranslations('components.layout.header');
