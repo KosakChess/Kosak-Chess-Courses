@@ -42,6 +42,47 @@
 					"cookies": "Ciasteczka"
 				}
 			}
+		},
+		"homepage": {
+			"hero": {
+				"bgImageAlt": "Drewniana szachownica z figurami szachowymi",
+				"title": "Opanuj grę w szachy",
+				"description": "Odkryj swój potencjał dzięki kursom prowadzonym przez doświadczonego szachistę, interaktywnym lekcjom i praktycznym ćwiczeniom dostosowanym do podnoszenia umiejętności od początkującego do arcymistrza.",
+				"cta": {
+					"signUpBtn": "Rozpocznij naukę",
+					"coursesBtn": "Zobacz kursy"
+				}
+			},
+			"about": {
+				"header": "O mnie",
+				"description": "Jestem arcymistrzem szachowym z ponad 15-letnim doświadczeniem. Moja podróż przez szachy zaprowadziła mnie na najwyższe poziomy rywalizacji, gdzie doskonaliłem swoje umiejętności i rozwijałem głębokie zrozumienie strategii i taktyki szachowej. Szachy to dla mnie coś więcej niż tylko gra— to pasja, którą pragnę się z Tobą podzielić. Poprzez te kursy chcę przekazać wiedzę i spostrzeżenia, które zdobyłem przez lata, aby pomóc Ci podnieść poziom Twojej gry. Niezależnie od tego, czy dopiero zaczynasz, czy chcesz udoskonalić swoje umiejętności, jestem tutaj, aby Cię poprowadzić na każdym kroku.",
+				"cta": {
+					"continueReading": "Kontynuuj czytanie",
+					"contact": "Skontaktuj się ze mną"
+				}
+			},
+			"features": {
+				"header": "Ucz się w swoim tempie",
+				"subheader": "Wszystko, czego potrzebujesz, aby stać się lepszym graczem",
+				"description": "Oglądaj i ucz się, jak nasi doświadczeni instruktorzy rozkładają złożone strategie na łatwe do zrozumienia lekcje. Zatrzymuj, przewijaj i oglądaj ponownie we własnym tempie.",
+				"items": {
+					"videos": {
+						"icon": "Video",
+						"title": "Ucz się od ekspertów",
+						"description": "Oglądaj lekcje wideo prowadzone przez najlepszych graczy i trenerów. Dowiedz się, jak myślą podczas gry i jakie strategie stosują, aby osiągnąć sukces."
+					},
+					"articles": {
+						"icon": "FileText",
+						"title": "Zanurz się w teorii",
+						"description": "Odkryj świat szachów dzięki szczegółowym artykułom, które obejmują wszystko, od strategii otwarcia po techniki końcówki. Idealne dla graczy, którzy chcą pogłębić swoje zrozumienie gry."
+					},
+					"practice": {
+						"icon": "BicepsFlexed",
+						"title": "Przetestuj swoje umiejętności",
+						"description": "Zastosuj to, czego się nauczyłeś, w naszych interaktywnych sesjach praktycznych. Rozwiązuj łamigłówki, graj przeciwko AI i śledź swoje postępy, poprawiając swoją grę."
+					}
+				}
+			}
 		}
 	}
 }

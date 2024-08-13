@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
+import { type LucideIcon } from 'lucide-react';
 import { type UrlObject } from 'url';
 
 import { type Route } from 'next';
@@ -43,10 +44,25 @@ export interface ButtonProps
 	asChild?: boolean;
 	href?: Route | UrlObject;
 	activeClassName?: string;
+	leadingIcon?: LucideIcon;
+	trailingIcon?: LucideIcon;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-	({ className, variant, size, asChild = false, href, activeClassName, ...props }, ref) => {
+	(
+		{
+			className,
+			variant,
+			size,
+			asChild = false,
+			href,
+			activeClassName,
+			leadingIcon: LeadingIcon,
+			trailingIcon: TrailingIcon,
+			...props
+		},
+		ref,
+	) => {
 		const Comp = asChild ? Slot : 'button';
 
 		if (href) {
@@ -57,7 +73,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 					className={cn(buttonVariants({ variant, size, className }))}
 					activeClassName={activeClassName}
 				>
+					{LeadingIcon && <LeadingIcon className="me-2 size-5" aria-hidden />}
 					{props.children}
+					{TrailingIcon && <TrailingIcon className="ms-2 size-5" aria-hidden />}
 				</ActiveLink>
 			);
 		}
