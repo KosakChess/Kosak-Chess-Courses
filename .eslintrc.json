@@ -68,7 +68,13 @@
 	},
 	"overrides": [
 		{
-			"files": ["src/app/**/*.ts?(x)", "tailwind.config.ts", "middleware.ts", "src/i18n.ts"],
+			"files": [
+				"src/app/**/page.tsx",
+				"src/app/**/layout.tsx",
+				"tailwind.config.ts",
+				"middleware.ts",
+				"src/i18n.ts"
+			],
 			"rules": {
 				"import/no-default-export": "off"
 			}

@@ -21,7 +21,7 @@ const config = {
 				foreground: 'var(--foreground)',
 				headings: 'var(--headings)',
 				primary: {
-					DEFAULT: '#328FFF',
+					DEFAULT: '#1b6ff5',
 					foreground: '#fff',
 					50: '#eef7ff',
 					100: '#d9edff',

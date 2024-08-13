@@ -1,12 +1,11 @@
 import createNextIntlPlugin from 'next-intl/plugin';
+import withPlaiceholder from '@plaiceholder/next';
 
 const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	experimental: {
-		typedRoutes: true,
-	},
+	pageExtensions: ['ts', 'tsx'],
 };
 
-export default withNextIntl(nextConfig);
+export default withPlaiceholder(withNextIntl(nextConfig));

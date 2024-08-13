@@ -5,7 +5,7 @@ import { MoonIcon, SunIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 
-import { IconButton } from '@/components/shared/IconButton';
+import { IconButton } from '@/components/shared/icon-button';
 
 export const ThemeToggle = () => {
 	const t = useTranslations('components.layout.header.ThemeToggle');

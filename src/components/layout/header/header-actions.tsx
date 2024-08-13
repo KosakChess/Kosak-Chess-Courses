@@ -3,10 +3,10 @@ import { UserRound } from 'lucide-react';
 import { type Route } from 'next';
 import { useTranslations } from 'next-intl';
 
-import { IconButton } from '@/components/shared/IconButton';
+import { IconButton } from '@/components/shared/icon-button';
 
-import { LanguageSelector } from './LanguageSelector';
-import { ThemeToggle } from './ThemeToggle';
+import { LanguageSelector } from './language-selector';
+import { ThemeToggle } from './theme-toggle';
 
 export const HeaderActions = () => {
 	const t = useTranslations('components.layout.header.signInLink');

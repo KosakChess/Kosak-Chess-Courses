@@ -42,6 +42,47 @@
 					"cookies": "Cookies"
 				}
 			}
+		},
+		"homepage": {
+			"hero": {
+				"bgImageAlt": "Wooden chessboard with chess pieces",
+				"title": "Master the Game of Chess",
+				"description": "Unlock your potential with expert-led courses, interactive lessons, and practical exercises tailored to elevate your skills from beginner to grandmaster.",
+				"cta": {
+					"signUpBtn": "Get started",
+					"coursesBtn": "View courses"
+				}
+			},
+			"about": {
+				"header": "About Me",
+				"description": "I am a chess grandmaster with over 15 years of experience. My journey through chess has taken me to the highest levels of competition, where I’ve honed my skills and developed a deep understanding of chess strategy and tactics. Chess isn’t just a game to me—it’s a passion that I’m eager to share with you. Through these courses, I aim to pass on the knowledge and insights I’ve gained over the years to help you elevate your game. Whether you’re just starting out or looking to refine your skills, I’m here to guide you every step of the way",
+				"cta": {
+					"continueReading": "Continue reading",
+					"contact": "Contact me"
+				}
+			},
+			"features": {
+				"header": "Learn at Your Own Pace",
+				"subheader": "Everything you need to become a better player",
+				"description": "Watch and learn as our expert instructors break down complex strategies into easy-to-understand lessons. Pause, rewind, and rewatch at your own pace.",
+				"items": {
+					"videos": {
+						"icon": "Video",
+						"title": "Learn from the Experts",
+						"description": "Watch video lessons from top players and coaches. Learn new techniques, study classic games, and get insights from the best in the business."
+					},
+					"articles": {
+						"icon": "FileText",
+						"title": "Deep Dive into Theory",
+						"description": "Explore the world of chess with detailed articles that cover everything from opening strategies to endgame techniques. Perfect for players who want to deepen their understanding of the game."
+					},
+					"practice": {
+						"icon": "BicepsFlexed",
+						"title": "Test Your Skills",
+						"description": "Apply what you've learned in our interactive practice sessions. Solve puzzles, play against the AI, and track your progress as you improve your game."
+					}
+				}
+			}
 		}
 	}
 }
