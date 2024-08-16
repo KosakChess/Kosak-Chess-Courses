@@ -1,8 +1,8 @@
 import { useTranslations } from 'next-intl';
 
-import { Discord } from '@/components/icons/discord';
-import { Facebook } from '@/components/icons/facebook';
-import { Youtube } from '@/components/icons/youtube';
+import { Discord } from '@/components/icons/discord_temp';
+import { Facebook } from '@/components/icons/facebook_temp';
+import { Youtube } from '@/components/icons/youtube_temp';
 
 import { FooterNav } from './footer-nav';
 import { SocialLink } from './social-link';
