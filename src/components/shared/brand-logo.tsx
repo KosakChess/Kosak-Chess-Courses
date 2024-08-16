@@ -8,7 +8,7 @@ interface Props {
 	priority?: boolean;
 }
 
-export const Logo = ({ className, priority }: Props) => (
+export const BrandLogo = ({ className, priority }: Props) => (
 	<Link href="/">
 		<NextImage
 			src={logo}

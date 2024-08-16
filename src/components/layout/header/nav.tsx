@@ -17,9 +17,9 @@ import {
 } from '@/components/ui/sheet';
 import { useMedia } from '@/hooks/use-media';
 
-import { NavigationLink } from './navigation-link';
+import { NavLink } from './nav-link';
 
-export const Navigation = () => {
+export const Nav = () => {
 	const t = useTranslations('components.layout.header');
 	const isMobile = useMedia('(max-width: 1024px)', false);
 
@@ -28,14 +28,14 @@ export const Navigation = () => {
 		articles: t('routes.articles'),
 		about: t('routes.about'),
 		contact: t('routes.contact'),
-	};
+	} as const;
 
 	if (!isMobile) {
 		return (
 			<nav>
 				<ul className="hidden items-center gap-x-3 lg:flex">
 					{Object.entries(routes).map(([key, value]) => (
-						<NavigationLink key={key} href={`/${key}` as Route} label={value} />
+						<NavLink key={key} href={`/${key}` as Route} label={value} />
 					))}
 				</ul>
 			</nav>
