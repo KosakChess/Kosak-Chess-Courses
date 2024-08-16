@@ -58,7 +58,7 @@ model Chapter {
   description       String?       @db.Text
   videoUrl          String?       @db.Text
   thumbnailUrl      String?       @db.Text
-  pgn               String?       @db.Text
+  pgn               String[]      @db.Text
   duration          Int?          @default(0)
   captionsUrl       String?       @db.Text
   isPublished       Boolean       @default(false)
