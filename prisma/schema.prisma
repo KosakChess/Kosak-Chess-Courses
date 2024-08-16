@@ -1,14 +1,155 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URL")
+}
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["fullTextIndex"]
 }
 
-datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+enum Role {
+  ADMIN
+  STUDENT
+}
+
+model User {
+  id        String   @id @default(uuid())
+  clerkId   String   @unique
+  role      Role     @default(STUDENT)
+
+  purchases Purchase[]
+  reviews   Review[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+}
+
+model Course {
+  id          String       @id @default(uuid())
+  title       String       
+  description String?      @db.Text
+  imageUrl    String?      @db.Text
+  price       Int          @default(0)
+  isPublished Boolean      @default(false)
+
+  categoryId  String?
+  category    Category?    @relation(fields: [categoryId], references: [id])
+
+  chapters    Chapter[]
+  reviews     Review[]
+  purchases   Purchase[]
+
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt()
+
+  @@index([categoryId])
+}
+
+model Category {
+  id      String   @id @default(uuid())
+  name    String   @unique
+  courses Course[]
+}
+
+model Chapter {
+  id                String        @id @default(uuid())
+  title             String 
+  description       String?       @db.Text
+  videoUrl          String?       @db.Text
+  thumbnailUrl      String?       @db.Text
+  pgn               String?       @db.Text
+  duration          Int?          @default(0)
+  captionsUrl       String?       @db.Text
+  isPublished       Boolean       @default(false)
+  isFree            Boolean       @default(false)
+
+  courseId          String
+  course            Course        @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  userProgress      UserProgress[]
+  attachments       Attachment[] 
+
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt()
+
+  @@index([courseId])
+}
+
+model Attachment {
+  id        String   @id @default(uuid())
+  name      String
+  url       String   @db.Text
+
+  chapterId String
+  chapter   Chapter  @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+
+  @@index([chapterId])
+}
+
+model UserProgress {
+  id          String   @id @default(uuid())
+  userId      String
+  isCompleted Boolean  @default(false)
+
+  chapterId   String
+  chapter     Chapter  @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt()
+
+  @@index([chapterId])
+  @@unique([userId, chapterId])
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  content   String   @db.Text
+  rating    Int      @default(1)
+
+  courseId  String
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  parentReviewId String?
+  parentReview   Review? @relation("ReviewToReply", fields: [parentReviewId], references: [id])
+  replies        Review[] @relation("ReviewToReply")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+
+  @@index([courseId])
+  @@index([userId])
+}
+
+model Purchase {
+  id        String   @id @default(uuid())
+
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  courseId  String
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+
+  @@index([courseId])
+  @@unique([userId, courseId])
+}
+
+model StripeCustomer {
+  id                String   @id @default(uuid())
+  userId            String
+  stripeCustomerId  String
+
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt()
+
+  @@unique([userId, stripeCustomerId])
 }
