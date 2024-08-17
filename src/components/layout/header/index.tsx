@@ -2,10 +2,10 @@ import { pick } from 'lodash';
 
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 
-import { Logo } from '@/components/shared/logo';
+import { BrandLogo } from '@/components/shared/brand-logo';
 
 import { HeaderActions } from './header-actions';
-import { Navigation } from './navigation';
+import { Nav } from './nav';
 
 export const Header = () => {
 	const messages = useMessages();
@@ -16,8 +16,8 @@ export const Header = () => {
 				<div className="mx-auto max-w-screen-xl">
 					<div className="flex w-full items-center justify-between">
 						<div className="flex flex-row-reverse items-center gap-x-2 lg:flex-row lg:gap-x-16">
-							<Logo priority className="h-auto w-20" />
-							<Navigation />
+							<BrandLogo priority className="h-auto w-20" />
+							<Nav />
 						</div>
 						<HeaderActions />
 					</div>

@@ -7,7 +7,7 @@ interface Props {
 	href: Route;
 }
 
-export const NavigationLink = ({ href, label }: Props) => (
+export const NavLink = ({ href, label }: Props) => (
 	<li>
 		<Button
 			href={href}
