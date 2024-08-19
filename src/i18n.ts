@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { getRequestConfig } from 'next-intl/server';
 
-import { isValidLocale } from './navigation';
+import { isValidLocale } from './lib/navigation';
 
 export default getRequestConfig(async ({ locale }) => {
 	if (!isValidLocale(locale)) notFound();

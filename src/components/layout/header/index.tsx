@@ -1,14 +1,17 @@
 import { pick } from 'lodash';
 
-import { NextIntlClientProvider, useMessages } from 'next-intl';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 
 import { BrandLogo } from '@/components/shared/brand-logo';
+import { checkUser } from '@/lib/check-user';
 
 import { HeaderActions } from './header-actions';
 import { Nav } from './nav';
 
-export const Header = () => {
-	const messages = useMessages();
+export const Header = async () => {
+	const messages = await getMessages();
+	const _user = await checkUser();
 
 	return (
 		<NextIntlClientProvider messages={pick(messages, 'components.layout.header')}>

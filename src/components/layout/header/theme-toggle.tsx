@@ -9,12 +9,12 @@ import { IconButton } from '@/components/shared/icon-button';
 
 export const ThemeToggle = () => {
 	const t = useTranslations('components.layout.header.ThemeToggle');
-	const { theme, setTheme } = useTheme();
+	const { resolvedTheme, setTheme } = useTheme();
 
 	return (
 		<IconButton
 			label={t('label')}
-			onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+			onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
 			icon={
 				<>
 					<SunIcon className="size-6 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />

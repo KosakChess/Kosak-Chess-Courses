@@ -13,7 +13,7 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Link, type Locale } from '@/navigation';
+import { Link, type Locale } from '@/lib/navigation';
 
 export const LanguageSelector = () => {
 	const t = useTranslations('components.layout.header.LanguageSelector');
@@ -27,6 +27,7 @@ export const LanguageSelector = () => {
 			<DropdownMenuTrigger asChild>
 				<Button
 					aria-label={t('label')}
+					title={t('label')}
 					type="button"
 					className="rounded-full"
 					variant="text"

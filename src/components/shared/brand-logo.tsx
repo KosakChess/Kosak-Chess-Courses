@@ -1,7 +1,7 @@
 import NextImage from 'next/image';
 
 import logo from '@/assets/logo.png';
-import { Link } from '@/navigation';
+import { Link } from '@/lib/navigation';
 
 interface Props {
 	className?: string;

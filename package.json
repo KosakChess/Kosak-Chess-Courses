@@ -12,6 +12,9 @@
 		"netlify-build": "prisma generate && prisma migrate deploy && next build"
 	},
 	"dependencies": {
+		"@clerk/localizations": "^2.5.8",
+		"@clerk/nextjs": "^5.3.1",
+		"@clerk/themes": "^2.1.20",
 		"@plaiceholder/next": "^3.0.0",
 		"@prisma/client": "5.18.0",
 		"@radix-ui/react-dialog": "^1.1.1",
