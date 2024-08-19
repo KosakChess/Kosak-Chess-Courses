@@ -11,7 +11,7 @@ import { Nav } from './nav';
 
 export const Header = async () => {
 	const messages = await getMessages();
-	const _user = await checkUser();
+	await checkUser();
 
 	return (
 		<NextIntlClientProvider messages={pick(messages, 'components.layout.header')}>
