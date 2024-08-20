@@ -2,25 +2,25 @@ import React from 'react';
 import { type LucideIcon } from 'lucide-react';
 
 import { Button, type ButtonProps } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
-interface Props extends Pick<ButtonProps, 'href'> {
+interface Props extends Omit<ButtonProps, 'asChild' | 'leadingICon' | 'trailingICon'> {
 	icon: LucideIcon | React.JSX.Element;
 	label: string;
-	onClick?: () => void;
 }
 
 export const IconButton = React.forwardRef<HTMLButtonElement, Props>(
-	({ icon, label, onClick, href }, ref) => {
+	({ icon, label, className, ...rest }, ref) => {
 		return (
 			<Button
 				ref={ref}
 				aria-label={label}
+				title={label}
 				type="button"
-				className="rounded-full"
+				className={cn('rounded-full', className)}
 				variant="text"
 				size="icon"
-				href={href}
-				onClick={onClick}
+				{...rest}
 			>
 				{React.isValidElement(icon)
 					? icon
