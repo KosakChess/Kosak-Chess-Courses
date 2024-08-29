@@ -7,29 +7,28 @@ export default function PlayRandomMoveVsPlayer() {
 	const [game, setGame] = useState(new Chess());
 
 	function makeAMove(move: string | { from: Square; to: Square; promotion: string }): Move | null {
-		console.log('makeAMove', move);
 		const gameCopy = new Chess(game.fen());
 		try {
 			const result = gameCopy.move(move);
 			setGame(gameCopy);
-			return result;
+			// player's move is done, now it's time for the computer to play
+			// TODO: here move should be imported from PGN provided by the user
+			const possibleMoves = gameCopy.moves();
+			if (possibleMoves.length === 0) return result;
+			const randomIndex = Math.floor(Math.random() * possibleMoves.length);
+			const randomMove = possibleMoves[randomIndex] as string;
+			const randomResult = gameCopy.move(randomMove);
+			setGame(gameCopy);
+			return randomResult;
 		} catch (e) {
 			console.error(e);
 			return null;
 		}
 	}
 
-	function makeRandomMove() {
-		const possibleMoves = game.moves();
-		if (possibleMoves.length === 0) return;
-		const randomIndex = Math.floor(Math.random() * possibleMoves.length);
-		makeAMove(possibleMoves[randomIndex] as string);
-	}
-
 	function onDrop(sourceSquare: Square, targetSquare: Square): boolean {
 		const move = { from: sourceSquare, to: targetSquare, promotion: 'q' };
 		const result = makeAMove(move);
-		if (result) setTimeout(makeRandomMove, 1000);
 		return !!result;
 	}
 
