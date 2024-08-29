@@ -6,7 +6,9 @@ import { Chess, type Move, type Square } from 'chess.js';
 export default function PlayRandomMoveVsPlayer() {
 	const [game, setGame] = useState(new Chess());
 
-	function makeAMove(move: string | { from: Square; to: Square; promotion: string }): Move | null {
+	function makeAMove(
+		move: string | { from: Square; to: Square; promotion: string | undefined },
+	): Move | null {
 		const gameCopy = new Chess(game.fen());
 		try {
 			const result = gameCopy.move(move);
@@ -26,8 +28,13 @@ export default function PlayRandomMoveVsPlayer() {
 		}
 	}
 
-	function onDrop(sourceSquare: Square, targetSquare: Square): boolean {
-		const move = { from: sourceSquare, to: targetSquare, promotion: 'q' };
+	function onDrop(sourceSquare: Square, targetSquare: Square, piece: string): boolean {
+		// piece is either wP, wN, wB, wR, wQ, wK, bP, bN, bB, bR, bQ, bK
+		// if it is a ptomotion, piece will be wQ, wR, wB, wN, bQ, bR, bB, bN
+		// promotion takes just Q, R, B, N, so we need to remove the first character and then convert to lowercase
+		let promotionPiece: string | undefined = 'q';
+		if (piece.length === 2) promotionPiece = piece[1]?.toLocaleLowerCase();
+		const move = { from: sourceSquare, to: targetSquare, promotion: promotionPiece };
 		const result = makeAMove(move);
 		return !!result;
 	}
