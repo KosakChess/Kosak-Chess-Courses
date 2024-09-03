@@ -38,6 +38,7 @@ export const getCourses = async (category?: string) => {
 			},
 			chapters: {
 				select: {
+					id: true,
 					lessons: {
 						select: {
 							duration: true,
@@ -62,6 +63,8 @@ export const getCourses = async (category?: string) => {
 				return total + chapter.lessons.reduce((sum, lesson) => sum + (lesson.duration || 0), 0);
 			}, 0);
 
+			const chapterCount = course.chapters.length;
+
 			return {
 				slug: course.slug,
 				imageUrl: course.imageUrl,
@@ -70,6 +73,7 @@ export const getCourses = async (category?: string) => {
 					course.purchases && course.purchases.length > 0 ? null : course.translations[0]?.price,
 				category: course.category?.translations[0]?.name,
 				duration: totalDuration,
+				chaptersCount: chapterCount, // Add the chapters count here
 				purchased: course.purchases && course.purchases.length > 0,
 				userProgress:
 					course.purchases && course.purchases.length > 0

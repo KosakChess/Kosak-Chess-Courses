@@ -88,6 +88,16 @@
 			"category-select": {
 				"label": "Categories",
 				"allCategories": "All Categories"
+			},
+			"course-card": {
+				"chaptersCount": "Chapters",
+				"learnMore": "Learn more",
+				"free": "Free"
+			}
+		},
+		"shared": {
+			"progress": {
+				"label": "Progress"
 			}
 		}
 	},

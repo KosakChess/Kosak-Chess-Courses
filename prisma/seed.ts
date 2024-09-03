@@ -68,8 +68,8 @@ const initialCourses: Prisma.CourseCreateInput[] = [
 			create: [
 				{
 					locale: Locale.pl,
-					title: 'Strategia Średniej Gry',
-					description: 'Zdobądź wiedzę na temat strategii średniej gry w szachach.',
+					title: 'Strategia Gry Środkowej',
+					description: 'Zdobądź wiedzę na temat strategii Gry Środkowej w szachach.',
 					price: 4999,
 					currency: Currency.PLN,
 				},

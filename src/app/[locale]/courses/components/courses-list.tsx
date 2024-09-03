@@ -31,6 +31,7 @@ export const CoursesListSkeleton = () => (
 				key={index}
 				className="group relative overflow-hidden rounded-lg border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800/80"
 			>
+				<span className="sr-only">Loading...</span>
 				<div className="animate-pulse">
 					<div className="h-48 w-full bg-slate-200 dark:bg-slate-700" />
 					<div className="p-4">
@@ -39,7 +40,6 @@ export const CoursesListSkeleton = () => (
 						<div className="flex justify-between">
 							<div className="h-4 w-1/3 bg-slate-200 dark:bg-slate-700" />
 							<div className="h-6 w-16 bg-slate-200 dark:bg-slate-700" />
-							<span className="sr-only">Loading...</span>
 						</div>
 					</div>
 				</div>

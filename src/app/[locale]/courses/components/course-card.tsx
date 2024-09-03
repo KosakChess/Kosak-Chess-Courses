@@ -1,6 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 import { Progress } from '@/components/shared/progress';
 
@@ -14,6 +15,7 @@ interface Props {
 }
 
 export const CourseCard = ({ course }: Props) => {
+	const t = useTranslations('components.courses.course-card');
 	const href = `/${course.purchased ? 'course' : 'learn'}/${course.slug}`;
 
 	return (
@@ -34,7 +36,7 @@ export const CourseCard = ({ course }: Props) => {
 					<div className="mt-4 flex items-center justify-between px-4 pb-4">
 						<span aria-hidden></span>
 						<span className="flex items-center text-xs text-muted-foreground transition-colors group-hover:text-primary sm:text-sm">
-							Learn more <ArrowRight className="size-5 pl-1" aria-hidden />
+							{t('learnMore')} <ArrowRight className="size-5 pl-1" aria-hidden />
 						</span>
 					</div>
 				)}
