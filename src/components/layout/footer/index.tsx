@@ -30,9 +30,9 @@ export const Footer = () => {
 
 	return (
 		<footer aria-labelledby="footer-heading">
-			<h4 id="footer-heading" className="sr-only">
+			<h3 id="footer-heading" className="sr-only">
 				{t('header')}
-			</h4>
+			</h3>
 			<div className="mx-auto max-w-7xl px-6 pb-10 pt-20 lg:px-8">
 				<FooterNav />
 				<div className="my-10 flex justify-center space-x-10 md:my-12">

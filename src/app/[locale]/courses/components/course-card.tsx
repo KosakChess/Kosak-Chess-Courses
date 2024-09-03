@@ -1,46 +1,39 @@
 import { ArrowRight } from 'lucide-react';
 
-import { type StaticImageData } from 'next/image';
 import Link from 'next/link';
 
 import { Progress } from '@/components/shared/progress';
+
+import { type getCourses } from '../queries/get-courses';
 
 import { CourseCardDescription } from './course-card-description';
 import { CourseCardImage } from './course-card-image';
 
 interface Props {
-	id: string;
-	category: string;
-	chapters: number;
-	imageUrl: string | StaticImageData;
-	published?: boolean;
-	purchased: boolean;
-	price: number;
-	progress?: number;
-	title: string;
+	course: Awaited<ReturnType<typeof getCourses>>[number];
 }
 
-export const CourseCard = (props: Props) => {
-	const href = `/${props.purchased ? 'courses' : 'learn'}/${props.id}`;
+export const CourseCard = ({ course }: Props) => {
+	const href = `/${course.purchased ? 'course' : 'learn'}/${course.slug}`;
 
 	return (
 		<li className="group relative overflow-hidden rounded-lg border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800/80">
 			<Link href={href}>
 				<div className="overflow-hidden border-b">
-					<CourseCardImage imageUrl={props.imageUrl} alt={props.title} />
+					<CourseCardImage imageUrl={course.imageUrl} alt={course.title || ''} />
 				</div>
-				<CourseCardDescription {...props} />
-				{props.purchased ? (
+				<CourseCardDescription course={course} />
+				{course.purchased ? (
 					<div className="px-4 pb-4">
 						<Progress
-							percentage={props.progress || 0}
-							variant={props.progress === 100 ? 'success' : 'default'}
+							percentage={course.userProgress || 0}
+							variant={course.userProgress === 100 ? 'success' : 'default'}
 						/>
 					</div>
 				) : (
-					<div className="mt-4 flex items-center justify-between px-4">
+					<div className="mt-4 flex items-center justify-between px-4 pb-4">
 						<span aria-hidden></span>
-						<span className="flex items-center text-xs text-muted-foreground sm:text-sm">
+						<span className="flex items-center text-xs text-muted-foreground transition-colors group-hover:text-primary sm:text-sm">
 							Learn more <ArrowRight className="size-5 pl-1" aria-hidden />
 						</span>
 					</div>

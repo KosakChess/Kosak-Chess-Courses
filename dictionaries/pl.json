@@ -83,6 +83,23 @@
 					}
 				}
 			}
+		},
+		"courses": {
+			"category-select": {
+				"label": "Kategorie",
+				"allCategories": "Wszystkie kategorie"
+			}
+		}
+	},
+	"pages": {
+		"courses": {
+			"header": "Kursy",
+			"description": "Niezależnie od tego, czy dopiero zaczynasz, czy chcesz doskonalić swoje umiejętności, moje wciągające lekcje poprowadzą Cię przez strategie i taktyki potrzebne do zdominowania szachownicy. Zanurz się w kursach już dziś i podnieś swoją grę na wyższy poziom!",
+			"categories": {
+				"openings": "Debiuty",
+				"tactics": "Taktyka",
+				"strategy": "Strategia"
+			}
 		}
 	}
 }
