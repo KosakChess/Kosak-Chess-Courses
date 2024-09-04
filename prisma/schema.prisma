@@ -1,6 +1,6 @@
 datasource db {
   provider = "postgresql"
-  url      = env("POSTGRES_URL")
+  url      = env("DATABASE_URL")
 }
 
 generator client {
@@ -13,10 +13,20 @@ enum Role {
   STUDENT
 }
 
+enum Locale {
+  en
+  pl
+}
+
+enum Currency {
+  USD
+  PLN
+}
+
 model User {
   id        String   @id @default(uuid())
   clerkId   String   @unique
-  email     String?   @unique
+  email     String?  @unique
   name      String?
   role      Role     @default(STUDENT)
 
@@ -28,83 +38,136 @@ model User {
 }
 
 model Course {
-  id          String       @id @default(uuid())
-  title       String       
-  description String?      @db.Text
-  imageUrl    String?      @db.Text
-  price       Int          @default(0)
-  isPublished Boolean      @default(false)
+  id            String         @id @default(uuid())
+  slug          String         @unique
+  imageUrl      String?        @db.Text
+  isPublished   Boolean        @default(false)
 
-  categoryId  String?
-  category    Category?    @relation(fields: [categoryId], references: [id])
+  categoryId    String?
+  category      Category?      @relation(fields: [categoryId], references: [id])
 
-  chapters    Chapter[]
-  reviews     Review[]
-  purchases   Purchase[]
+  chapters      Chapter[]
+  reviews       Review[]
+  purchases     Purchase[]
+  translations  CourseTranslation[]
 
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt()
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt()
 
   @@index([categoryId])
 }
 
+model CourseTranslation {
+  id          String   @id @default(uuid())
+  locale      Locale
+  title       String
+  description String?  @db.Text
+  price       Int      @default(0) 
+  currency    Currency @default(USD)
+
+  courseId    String
+  course      Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt()
+
+  @@unique([courseId, locale])
+}
+
 model Category {
-  id      String   @id @default(uuid())
-  name    String   @unique
-  courses Course[]
+  id            String               @id @default(uuid())
+  slug          String               @unique
+  courses       Course[]
+  translations  CategoryTranslation[]
+}
+
+model CategoryTranslation {
+  id         String   @id @default(uuid())
+  locale     Locale
+  name       String
+
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+
+  @@unique([categoryId, locale])
 }
 
 model Chapter {
-  id                String        @id @default(uuid())
-  title             String 
-  description       String?       @db.Text
-  videoUrl          String?       @db.Text
-  thumbnailUrl      String?       @db.Text
-  pgn               String[]      @db.Text
-  duration          Int?          @default(0)
-  captionsUrl       String?       @db.Text
-  isPublished       Boolean       @default(false)
-  isFree            Boolean       @default(false)
+  id            String               @id @default(uuid())
+  courseId      String
+  course        Course               @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  lessons       Lesson[] 
+  isPublished   Boolean              @default(false)
+  translations  ChapterTranslation[]
 
-  courseId          String
-  course            Course        @relation(fields: [courseId], references: [id], onDelete: Cascade)
-
-  userProgress      UserProgress[]
-  attachments       Attachment[] 
-
-  createdAt         DateTime      @default(now())
-  updatedAt         DateTime      @updatedAt()
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt()
 
   @@index([courseId])
 }
 
-model Attachment {
-  id        String   @id @default(uuid())
-  name      String
-  url       String   @db.Text
+model ChapterTranslation {
+  id         String   @id @default(uuid())
+  locale     Locale
+  title      String
 
-  chapterId String
-  chapter   Chapter  @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  chapterId  String
+  chapter    Chapter  @relation(fields: [chapterId], references: [id], onDelete: Cascade)
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt()
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+
+  @@unique([chapterId, locale])
+}
+
+model Lesson {
+  id            String               @id @default(uuid())
+  videoUrl      String?              @db.Text
+  chessPuzzle   String?              @db.Text
+  chapterId     String
+  chapter       Chapter              @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  duration      Int?                 @default(0)
+  isPublished   Boolean              @default(false)
+  translations  LessonTranslation[]
+  userProgress  UserProgress[]
+
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt()
 
   @@index([chapterId])
+}
+
+model LessonTranslation {
+  id          String   @id @default(uuid())
+  locale      Locale
+  title       String
+  captionsUrl String?  @db.Text
+
+  lessonId    String
+  lesson      Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+
+  @@unique([lessonId, locale])
 }
 
 model UserProgress {
   id          String   @id @default(uuid())
   userId      String
+  lessonId    String
   isCompleted Boolean  @default(false)
 
-  chapterId   String
-  chapter     Chapter  @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  lesson      Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
 
   createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt()
+  updatedAt   DateTime @default(now())
 
-  @@index([chapterId])
-  @@unique([userId, chapterId])
+  @@index([lessonId])
+  @@unique([userId, lessonId])
 }
 
 model Review {
@@ -123,7 +186,7 @@ model Review {
   replies        Review[] @relation("ReviewToReply")
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt()
+  updatedAt DateTime @default(now())
 
   @@index([courseId])
   @@index([userId])
@@ -139,7 +202,7 @@ model Purchase {
   course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt()
+  updatedAt DateTime @default(now())
 
   @@index([courseId])
   @@unique([userId, courseId])
@@ -151,7 +214,7 @@ model StripeCustomer {
   stripeCustomerId  String
 
   createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt()
+  updatedAt         DateTime @default(now())
 
   @@unique([userId, stripeCustomerId])
 }

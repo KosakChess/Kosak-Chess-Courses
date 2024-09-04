@@ -83,6 +83,33 @@
 					}
 				}
 			}
+		},
+		"courses": {
+			"category-select": {
+				"label": "Categories",
+				"allCategories": "All Categories"
+			},
+			"course-card": {
+				"chaptersCount": "Chapters",
+				"learnMore": "Learn more",
+				"free": "Free"
+			}
+		},
+		"shared": {
+			"progress": {
+				"label": "Progress"
+			}
+		}
+	},
+	"pages": {
+		"courses": {
+			"header": "Courses",
+			"description": "Whether you’re just starting out or looking to sharpen your skills, my engaging lessons will guide you through the strategies and tactics needed to dominate the board. Dive into the courses today and take your game to the next level!",
+			"categories": {
+				"openings": "Openings",
+				"tactics": "Tactics",
+				"strategy": "Strategy"
+			}
 		}
 	}
 }

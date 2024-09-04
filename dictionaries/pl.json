@@ -83,6 +83,33 @@
 					}
 				}
 			}
+		},
+		"courses": {
+			"category-select": {
+				"label": "Kategorie",
+				"allCategories": "Wszystkie kategorie"
+			},
+			"course-card": {
+				"chaptersCount": "Rozdziały",
+				"learnMore": "Dowiedz się więcej",
+				"free": "Darmowy"
+			}
+		},
+		"shared": {
+			"progress": {
+				"label": "Postęp"
+			}
+		}
+	},
+	"pages": {
+		"courses": {
+			"header": "Kursy",
+			"description": "Niezależnie od tego, czy dopiero zaczynasz, czy chcesz doskonalić swoje umiejętności, moje wciągające lekcje poprowadzą Cię przez strategie i taktyki potrzebne do zdominowania szachownicy. Zanurz się w kursach już dziś i podnieś swoją grę na wyższy poziom!",
+			"categories": {
+				"openings": "Debiuty",
+				"tactics": "Taktyka",
+				"strategy": "Strategia"
+			}
 		}
 	}
 }
