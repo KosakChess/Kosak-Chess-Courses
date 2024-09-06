@@ -93,6 +93,12 @@
 				"chaptersCount": "Rozdziały",
 				"learnMore": "Dowiedz się więcej",
 				"free": "Darmowy"
+			},
+			"course-details": {
+				"buyBtn": "Kup teraz",
+				"freeChapterBtn": "Obejrzyj darmowy rozdział",
+				"chapterListHeader": "Treść kursu",
+				"free": "Darmowy"
 			}
 		},
 		"shared": {

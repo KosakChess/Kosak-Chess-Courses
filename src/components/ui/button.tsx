@@ -69,6 +69,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 			return (
 				<ActiveLink
 					href={href}
+					exact={false}
 					aria-label={props['aria-label']}
 					className={cn(buttonVariants({ variant, size, className }))}
 					activeClassName={activeClassName}

@@ -16,7 +16,7 @@ interface Props {
 
 export const CourseCard = ({ course }: Props) => {
 	const t = useTranslations('components.courses.course-card');
-	const href = `/${course.purchased ? 'course' : 'learn'}/${course.slug}`;
+	const href = `/${course.purchased ? 'learn' : 'course'}/${course.slug}`;
 
 	return (
 		<li className="group relative overflow-hidden rounded-lg border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800/80">

@@ -19,9 +19,17 @@ export const formatPrice = (price: number, locale?: Locale) => {
 	}).format(price);
 };
 
-export const secondsToHours = (seconds: number) => {
+type TimeFormat = 'short' | 'digital';
+
+export const secondsToHours = (seconds: number, format: TimeFormat = 'short') => {
 	const hours = Math.floor(seconds / 3600);
 	const minutes = Math.floor((seconds % 3600) / 60);
+
+	if (format === 'digital') {
+		const paddedHours = String(hours).padStart(2, '0');
+		const paddedMinutes = String(minutes).padStart(2, '0');
+		return `${paddedHours}:${paddedMinutes}`;
+	}
 
 	return `${hours}h ${minutes}m`;
 };

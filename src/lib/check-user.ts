@@ -22,8 +22,9 @@ export const checkUser = async () => {
 	const newUser = await db.user.create({
 		data: {
 			clerkId: user.id,
-			name: `${user.firstName} ${user.lastName}`,
+			name: user.fullName,
 			email: user.emailAddresses[0]?.emailAddress,
+			image: user.hasImage ? user.imageUrl : null,
 		},
 	});
 

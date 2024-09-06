@@ -93,6 +93,12 @@
 				"chaptersCount": "Chapters",
 				"learnMore": "Learn more",
 				"free": "Free"
+			},
+			"course-details": {
+				"buyBtn": "Buy Now",
+				"freeChapterBtn": "Watch Free Chapter",
+				"chapterListHeader": "Course Content",
+				"free": "Free"
 			}
 		},
 		"shared": {

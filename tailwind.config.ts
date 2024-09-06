@@ -21,19 +21,19 @@ const config = {
 				foreground: 'var(--foreground)',
 				headings: 'var(--headings)',
 				primary: {
+					'50': '#eef7ff',
+					'100': '#d9edff',
+					'200': '#bce0ff',
+					'300': '#8ecdff',
+					'400': '#59b0ff',
+					'500': '#328fff',
+					'600': '#1b6ff5',
+					'700': '#1459e1',
+					'800': '#1748b6',
+					'900': '#19408f',
+					'950': '#142857',
 					DEFAULT: '#1b6ff5',
 					foreground: '#fff',
-					50: '#eef7ff',
-					100: '#d9edff',
-					200: '#bce0ff',
-					300: '#8ecdff',
-					400: '#59b0ff',
-					500: '#328fff',
-					600: '#1b6ff5',
-					700: '#1459e1',
-					800: '#1748b6',
-					900: '#19408f',
-					950: '#142857',
 				},
 				secondary: {
 					DEFAULT: 'var(--secondary)',
@@ -65,12 +65,20 @@ const config = {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: { height: '0' },
-					to: { height: 'var(--radix-accordion-content-height)' },
+					from: {
+						height: '0',
+					},
+					to: {
+						height: 'var(--radix-accordion-content-height)',
+					},
 				},
 				'accordion-up': {
-					from: { height: 'var(--radix-accordion-content-height)' },
-					to: { height: '0' },
+					from: {
+						height: 'var(--radix-accordion-content-height)',
+					},
+					to: {
+						height: '0',
+					},
 				},
 			},
 			animation: {
