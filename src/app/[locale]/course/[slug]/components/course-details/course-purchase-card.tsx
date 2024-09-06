@@ -28,7 +28,7 @@ export const CoursePurchaseCard = ({ course: { title, price, imageUrl } }: Props
 			</div>
 			<CardContent className="py-0">
 				<h3 className="my-4 text-xl font-bold lg:text-2xl">{title}</h3>
-				<p className="mb-2 text-2xl font-bold text-green-500 lg:text-3xl">
+				<p className="mb-2 text-2xl font-bold text-green-600 dark:text-green-500 lg:text-3xl">
 					{price && formatPrice(price / 100, locale)}
 				</p>
 			</CardContent>
