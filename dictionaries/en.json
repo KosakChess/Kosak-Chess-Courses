@@ -102,6 +102,10 @@
 			}
 		},
 		"shared": {
+			"skeletons": {
+				"ariaLabel": "Loading content",
+				"loading": "Loading..."
+			},
 			"progress": {
 				"label": "Progress"
 			}
