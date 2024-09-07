@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
 import { SelectWithLinks } from '@/components/shared/select-with-links';
@@ -27,12 +28,18 @@ export const CategorySelect = async () => {
 	);
 };
 
-export const CategorySelectSkeleton = () => (
-	<>
-		<div
-			role="status"
-			className="h-9 w-[160px] animate-pulse rounded-md bg-slate-200 dark:bg-slate-700"
-		/>
-		<span className="sr-only">Loading...</span>
-	</>
-);
+export const CategorySelectSkeleton = () => {
+	const t = useTranslations('components.shared.skeletons');
+
+	return (
+		<>
+			<div
+				aria-busy
+				aria-label={t('ariaLabel')}
+				role="status"
+				className="h-9 w-[160px] animate-pulse rounded-md bg-slate-200 dark:bg-slate-700"
+			/>
+			<span className="sr-only">{t('loading')}</span>
+		</>
+	);
+};

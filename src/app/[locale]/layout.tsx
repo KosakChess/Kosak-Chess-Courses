@@ -62,8 +62,10 @@ export default function RootLayout({ children, params: { locale } }: LayoutProps
 					)}
 				>
 					<ThemeProvider>
-						<Header />
-						<main className="flex-1">{children}</main>
+						<div className="relative">
+							<Header />
+							<main className="flex-1">{children}</main>
+						</div>
 						<Footer />
 					</ThemeProvider>
 				</body>

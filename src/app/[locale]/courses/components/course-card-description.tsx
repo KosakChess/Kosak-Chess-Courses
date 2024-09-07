@@ -35,7 +35,7 @@ export const CourseCardDescription = ({
 					</p>
 				</div>
 				{!purchased && (
-					<span className="text-base font-medium text-green-500 md:text-lg">
+					<span className="text-base font-medium text-green-600 dark:text-green-500 md:text-lg">
 						{price && price > 0 ? formatPrice(price / 100, locale) : t('free')}
 					</span>
 				)}

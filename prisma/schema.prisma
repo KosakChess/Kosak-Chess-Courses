@@ -28,6 +28,7 @@ model User {
   clerkId   String   @unique
   email     String?  @unique
   name      String?
+  image     String?
   role      Role     @default(STUDENT)
 
   purchases Purchase[]
@@ -101,6 +102,7 @@ model Chapter {
   course        Course               @relation(fields: [courseId], references: [id], onDelete: Cascade)
   lessons       Lesson[] 
   isPublished   Boolean              @default(false)
+  isFree        Boolean              @default(false)
   translations  ChapterTranslation[]
 
   createdAt     DateTime             @default(now())

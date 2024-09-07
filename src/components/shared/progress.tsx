@@ -26,7 +26,7 @@ export const Progress = ({ percentage, variant }: Props) => {
 				<div
 					className={cn(
 						'h-2.5 rounded-full',
-						variant === 'success' ? 'bg-green-500' : 'bg-primary',
+						variant === 'success' ? 'bg-green-600 dark:bg-green-500' : 'bg-primary',
 					)}
 					style={{ width: `${percentage}%` }}
 				></div>
