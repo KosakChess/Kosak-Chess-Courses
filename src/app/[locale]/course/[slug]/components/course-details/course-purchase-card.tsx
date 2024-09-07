@@ -18,14 +18,15 @@ export const CoursePurchaseCard = ({ course: { title, price, imageUrl } }: Props
 
 	return (
 		<Card className="mx-auto max-w-2xl lg:sticky lg:top-4 lg:max-w-none">
-			<div className="aspect-h-9 aspect-w-16 relative overflow-hidden rounded-t-lg bg-slate-300 dark:bg-slate-800">
+			<header className="aspect-h-9 aspect-w-16 relative overflow-hidden rounded-t-lg bg-slate-300 dark:bg-slate-800">
 				<BlurredImage
 					src={imageUrl || ''}
 					alt={title || ''}
 					fill
 					className="size-full rounded-t-lg object-cover object-center"
 				/>
-			</div>
+				<h2 className="sr-only">{title}</h2>
+			</header>
 			<CardContent className="py-0">
 				<h3 className="my-4 text-xl font-bold lg:text-2xl">{title}</h3>
 				<p className="mb-2 text-2xl font-bold text-green-600 dark:text-green-500 lg:text-3xl">

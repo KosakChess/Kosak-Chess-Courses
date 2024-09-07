@@ -1,9 +1,11 @@
+import { Suspense } from 'react';
+
 import { unstable_setRequestLocale } from 'next-intl/server';
 
 import { db } from '@/lib/db';
 import { locales } from '@/lib/navigation';
 
-import { CourseDetails } from './components/course-details';
+import { CourseDetails, CourseDetailsSkeleton } from './components/course-details';
 
 export const dynamicParams = false;
 
@@ -25,7 +27,9 @@ export default function CoursePage({ params }: { params: { locale: string; slug:
 
 	return (
 		<div className="mt-20 lg:mt-28">
-			<CourseDetails slug={params.slug} />
+			<Suspense fallback={<CourseDetailsSkeleton />}>
+				<CourseDetails slug={params.slug} />
+			</Suspense>
 		</div>
 	);
 }

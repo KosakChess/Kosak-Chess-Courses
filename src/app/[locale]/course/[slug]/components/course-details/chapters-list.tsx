@@ -21,8 +21,8 @@ export const ChaptersList = ({ chapters }: Props) => {
 	const t = useTranslations('components.courses.course-details');
 
 	return (
-		<>
-			<h3 className="sr-only">{t('chapterListHeader')}</h3>
+		<section>
+			<h2 className="sr-only">{t('chapterListHeader')}</h2>
 			<Accordion type="single" collapsible className="mx-auto w-full max-w-xl">
 				{chapters.map((chapter, index) => (
 					<AccordionItem key={index} value={`chapter-${index}`}>
@@ -33,7 +33,9 @@ export const ChaptersList = ({ chapters }: Props) => {
 								</h3>
 								{chapter.isFree ? (
 									<span>
-										<Badge variant="success">{t('free')}</Badge>
+										<Badge variant="success" aria-hidden>
+											{t('free')}
+										</Badge>
 									</span>
 								) : (
 									<Lock className="size-5 text-slate-600 dark:text-slate-400" aria-hidden />
@@ -62,6 +64,6 @@ export const ChaptersList = ({ chapters }: Props) => {
 					</AccordionItem>
 				))}
 			</Accordion>
-		</>
+		</section>
 	);
 };
