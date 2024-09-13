@@ -1,12 +1,11 @@
-import { auth } from '@clerk/nextjs/server';
-
 import { getLocale } from 'next-intl/server';
 
 import { db } from '@/lib/db';
 import { type Locale } from '@/lib/navigation';
+import { getCurrentUser } from '@/queries/get-current-user';
 
 export const getCourses = async (category?: string) => {
-	const { userId } = auth();
+	const user = await getCurrentUser();
 	const locale = (await getLocale()) as Locale;
 
 	const courses = await db.course.findMany({
@@ -15,11 +14,21 @@ export const getCourses = async (category?: string) => {
 			...(category && {
 				category: { slug: category },
 			}),
+			// Exclude courses that the user has already purchased
+			NOT: {
+				purchases: {
+					some: {
+						userId: user?.id || '',
+					},
+				},
+			},
 		},
 		select: {
 			id: true,
 			slug: true,
 			imageUrl: true,
+			minElo: true,
+			maxElo: true,
 			category: {
 				select: {
 					translations: {
@@ -41,74 +50,31 @@ export const getCourses = async (category?: string) => {
 					id: true,
 					lessons: {
 						select: {
+							id: true,
 							duration: true,
 						},
 					},
 				},
 			},
-			purchases: userId
-				? {
-						where: { userId },
-						select: {
-							id: true,
-						},
-					}
-				: false,
 		},
 	});
 
-	const courseList = await Promise.all(
-		courses.map(async (course) => {
-			const totalDuration = course.chapters.reduce((total, chapter) => {
-				return total + chapter.lessons.reduce((sum, lesson) => sum + (lesson.duration || 0), 0);
-			}, 0);
+	const courseList = courses.map((course) => {
+		const totalDuration = course.chapters.reduce((total, chapter) => {
+			return total + chapter.lessons.reduce((sum, lesson) => sum + (lesson.duration ?? 0), 0);
+		}, 0);
 
-			const chapterCount = course.chapters.length;
-
-			return {
-				slug: course.slug,
-				imageUrl: course.imageUrl,
-				title: course.translations[0]?.title,
-				price:
-					course.purchases && course.purchases.length > 0 ? null : course.translations[0]?.price,
-				category: course.category?.translations[0]?.name,
-				duration: totalDuration,
-				chaptersCount: chapterCount, // Add the chapters count here
-				purchased: course.purchases && course.purchases.length > 0,
-				userProgress:
-					course.purchases && course.purchases.length > 0
-						? await getUserProgress(userId!, course.id)
-						: null,
-			};
-		}),
-	);
+		return {
+			slug: course.slug,
+			imageUrl: course.imageUrl,
+			title: course.translations[0]?.title ?? '',
+			price: course.translations[0]?.price ?? 0,
+			category: course.category?.translations[0]?.name ?? '',
+			duration: totalDuration,
+			minElo: course.minElo,
+			maxElo: course.maxElo,
+		};
+	});
 
 	return courseList;
-};
-
-const getUserProgress = async (userId: string, courseId: string) => {
-	const progress = await db.userProgress.findMany({
-		where: {
-			lesson: {
-				chapter: {
-					courseId,
-				},
-			},
-			userId,
-		},
-		select: {
-			isCompleted: true,
-		},
-	});
-
-	const completedLessons = progress.filter((p) => p.isCompleted).length;
-	const totalLessons = await db.lesson.count({
-		where: {
-			chapter: {
-				courseId,
-			},
-		},
-	});
-
-	return (completedLessons / totalLessons) * 100;
 };

@@ -15,7 +15,7 @@ export const Header = async () => {
 
 	return (
 		<NextIntlClientProvider messages={pick(messages, 'components.layout.header')}>
-			<header className="bg-background/90 absolute inset-x-0 top-0 z-40 w-full px-4 py-4 backdrop-blur-lg lg:px-12">
+			<header className="bg-background/90 sticky inset-x-0 top-0 z-40 w-full px-4 py-4 backdrop-blur-lg lg:px-12">
 				<div className="mx-auto max-w-screen-xl">
 					<div className="flex w-full items-center justify-between">
 						<div className="flex flex-row-reverse items-center gap-x-2 lg:flex-row lg:gap-x-16">

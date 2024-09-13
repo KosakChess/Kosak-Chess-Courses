@@ -26,10 +26,8 @@ export default function CoursePage({ params }: { params: { locale: string; slug:
 	unstable_setRequestLocale(params.locale);
 
 	return (
-		<div className="mt-20 lg:mt-28">
-			<Suspense fallback={<CourseDetailsSkeleton />}>
-				<CourseDetails slug={params.slug} />
-			</Suspense>
-		</div>
+		<Suspense fallback={<CourseDetailsSkeleton />}>
+			<CourseDetails slug={params.slug} />
+		</Suspense>
 	);
 }

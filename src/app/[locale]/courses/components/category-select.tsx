@@ -23,7 +23,7 @@ export const CategorySelect = async () => {
 			name="category-select"
 			items={mappedCategories}
 			parentRoute="/courses"
-			className="w-[160px]"
+			className="w-full max-w-xs sm:w-[190px]"
 		/>
 	);
 };
@@ -37,7 +37,7 @@ export const CategorySelectSkeleton = () => {
 				aria-busy
 				aria-label={t('ariaLabel')}
 				role="status"
-				className="h-9 w-[160px] animate-pulse rounded-md bg-slate-200 dark:bg-slate-700"
+				className="h-9 w-full max-w-xs animate-pulse rounded-md bg-slate-200 dark:bg-slate-700 sm:w-[190px]"
 			/>
 			<span className="sr-only">{t('loading')}</span>
 		</>

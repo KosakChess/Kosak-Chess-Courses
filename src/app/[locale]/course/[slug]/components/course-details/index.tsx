@@ -18,7 +18,7 @@ export const CourseDetails = async ({ slug }: Props) => {
 	const course = await getCourseBySlug(slug);
 
 	return (
-		<section className="container mx-auto mt-6 px-4 py-8">
+		<section className="container mx-auto mt-12 px-4 py-8">
 			<div className="flex flex-col lg:grid lg:grid-cols-3 lg:gap-8">
 				<article className="order-2 space-y-8 lg:order-1 lg:col-span-2">
 					<Markdown source={course.description || ''} />
@@ -41,7 +41,7 @@ export const CourseDetailsSkeleton = () => {
 			aria-busy
 			aria-label={t('ariaLabel')}
 			role="status"
-			className="container mx-auto mt-6 px-4 py-8"
+			className="container mx-auto mt-12 px-4 py-8"
 		>
 			<span className="sr-only">{t('loading')}</span>
 			<div className="flex flex-col lg:grid lg:grid-cols-3 lg:gap-8">

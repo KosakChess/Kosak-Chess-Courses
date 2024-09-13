@@ -90,15 +90,27 @@
 				"allCategories": "All Categories"
 			},
 			"course-card": {
-				"chaptersCount": "Chapters",
+				"eloRange": "This course is for players with FIDE rating approximately between {minElo} and {maxElo}",
 				"learnMore": "Learn more",
 				"free": "Free"
+			},
+			"courses-list": {
+				"availableCoursesTitle": "Available Courses"
 			},
 			"course-details": {
 				"buyBtn": "Buy Now",
 				"freeChapterBtn": "Watch Free Chapter",
 				"chapterListHeader": "Course Content",
-				"free": "Free"
+				"free": "Free",
+				"payment-form": {
+					"header": "Checkout",
+					"payBtn": "Pay Now",
+					"paymentSucceeded": "Payment succeeded!",
+					"paymentProcessing": "Your payment is processing.",
+					"paymentFailed": "Your payment was not successful, please try again.",
+					"somethingWentWrong": "Something went wrong.",
+					"unexpectedError": "An unexpected error occurred."
+				}
 			}
 		},
 		"shared": {
@@ -113,12 +125,20 @@
 	},
 	"pages": {
 		"courses": {
-			"header": "Courses",
+			"mainHeader": "Courses",
+			"availableHeader": "What to learn next",
+			"purchasedHeader": "Continue learning",
 			"description": "Whether you’re just starting out or looking to sharpen your skills, my engaging lessons will guide you through the strategies and tactics needed to dominate the board. Dive into the courses today and take your game to the next level!",
 			"categories": {
 				"openings": "Openings",
 				"tactics": "Tactics",
 				"strategy": "Strategy"
+			},
+			"checkout/success": {
+				"title": "Success!",
+				"thankYou": "Thank you for your purchase!",
+				"receiptSent": "Receipt has been sent to your email.",
+				"startLearning": "Start Learning"
 			}
 		}
 	}

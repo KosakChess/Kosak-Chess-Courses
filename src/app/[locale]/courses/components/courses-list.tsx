@@ -1,27 +1,61 @@
+import { useId } from 'react';
+
 import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 import { Skeleton } from '@/components/ui/skeleton';
+import { type Course } from '@/types';
 
 import { getCourses } from '../queries/get-courses';
+import { getPurchasedCourses } from '../queries/get-purchased-courses';
 
 import { CourseCard } from './course-card';
 
 interface Props {
+	title: string;
 	category?: string;
+	purchased?: boolean;
+	children?: React.ReactNode;
 }
 
-export const CoursesList = async ({ category }: Props) => {
-	const courses = await getCourses(category);
+export const CoursesList = async ({ title, category, purchased, children }: Props) => {
+	const id = useId();
+	const t = await getTranslations('components.courses.courses-list');
+	const courses = purchased ? await getPurchasedCourses() : await getCourses(category);
+
+	if (courses.length === 0) {
+		if (purchased) {
+			return null;
+		}
+
+		return (
+			<h2 className="text-headings/90 mt-8 text-center text-xl font-medium">{t('allPurchased')}</h2>
+		);
+	}
 
 	return (
-		<ul
-			role="list"
-			className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8"
-		>
-			{courses.map((course) => (
-				<CourseCard key={course.slug} course={course} />
-			))}
-		</ul>
+		<section aria-labelledby={id}>
+			{children ? (
+				<div className="mb-10 flex flex-col items-center gap-y-6 sm:flex-row sm:justify-between">
+					<h2 id={id} className="text-3xl font-semibold tracking-tight">
+						{title}
+					</h2>
+					{children}
+				</div>
+			) : (
+				<h2 id={id} className="mb-10 text-3xl font-semibold tracking-tight">
+					{title}
+				</h2>
+			)}
+			<ul
+				role="list"
+				className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8"
+			>
+				{courses.map((course) => (
+					<CourseCard key={course.slug} course={course as Course} />
+				))}
+			</ul>
+		</section>
 	);
 };
 

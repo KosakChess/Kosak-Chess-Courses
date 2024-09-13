@@ -43,6 +43,8 @@ model Course {
   slug          String         @unique
   imageUrl      String?        @db.Text
   isPublished   Boolean        @default(false)
+  minElo        Int            @default(0)
+  maxElo        Int            @default(3000)
 
   categoryId    String?
   category      Category?      @relation(fields: [categoryId], references: [id])

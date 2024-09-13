@@ -4,14 +4,13 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
 import { Progress } from '@/components/shared/progress';
-
-import { type getCourses } from '../queries/get-courses';
+import { type Course } from '@/types';
 
 import { CourseCardDescription } from './course-card-description';
 import { CourseCardImage } from './course-card-image';
 
 interface Props {
-	course: Awaited<ReturnType<typeof getCourses>>[number];
+	course: Course;
 }
 
 export const CourseCard = ({ course }: Props) => {

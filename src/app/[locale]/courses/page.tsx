@@ -13,19 +13,12 @@ export default function CoursesPage({ params }: PageProps) {
 	const t = useTranslations('pages.courses');
 
 	return (
-		<>
-			<div className="mb-6 flex items-center justify-between">
-				<h1 id="courses-heading" className="text-3xl font-semibold tracking-tight">
-					{t('header')}
-				</h1>
+		<Suspense fallback={<CoursesListSkeleton />}>
+			<CoursesList title={t('availableHeader')}>
 				<Suspense fallback={<CategorySelectSkeleton />}>
 					<CategorySelect />
 				</Suspense>
-			</div>
-			<p className="mb-10 max-w-3xl">{t('description')}</p>
-			<Suspense fallback={<CoursesListSkeleton />}>
-				<CoursesList />
-			</Suspense>
-		</>
+			</CoursesList>
+		</Suspense>
 	);
 }

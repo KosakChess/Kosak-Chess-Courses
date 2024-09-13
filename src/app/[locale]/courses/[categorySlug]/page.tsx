@@ -40,17 +40,12 @@ export default function CoursesPage({
 
 	return (
 		<>
-			<div className="mb-6 flex items-center justify-between">
-				<h1 id="courses-heading" className="text-3xl font-semibold tracking-tight">
-					{t(`categories.${categorySlug}`)}
-				</h1>
-				<Suspense fallback={<CategorySelectSkeleton />}>
-					<CategorySelect />
-				</Suspense>
-			</div>
-			<p className="mb-10 max-w-3xl">{t('description')}</p>
 			<Suspense fallback={<CoursesListSkeleton />}>
-				<CoursesList category={categorySlug} />
+				<CoursesList title={t('availableHeader')} category={categorySlug}>
+					<Suspense fallback={<CategorySelectSkeleton />}>
+						<CategorySelect />
+					</Suspense>
+				</CoursesList>
 			</Suspense>
 		</>
 	);

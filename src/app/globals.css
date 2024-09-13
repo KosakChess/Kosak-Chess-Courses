@@ -71,6 +71,10 @@
 		border-color: var(--border);
 	}
 
+	.link {
+		@apply text-primary underline transition-colors hover:text-primary-600;
+	}
+
 	* {
 		@apply border-border;
 	}

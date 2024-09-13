@@ -1,23 +1,27 @@
 import { useLocale, useTranslations } from 'next-intl';
 
+import { ActionButton } from '@/components/shared/action-button';
 import { BlurredImage } from '@/components/shared/blurred-image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { type Locale } from '@/lib/navigation';
 import { formatPrice } from '@/lib/utils';
 
+import { handlePayment } from '../../actions/handle-payment';
 import { type getCourseBySlug } from '../../queries/get-course-by-slug';
 
 interface Props {
 	course: Awaited<ReturnType<typeof getCourseBySlug>>;
 }
 
-export const CoursePurchaseCard = ({ course: { title, price, imageUrl } }: Props) => {
+export const CoursePurchaseCard = ({ course: { slug, title, price, imageUrl } }: Props) => {
 	const locale = useLocale() as Locale;
 	const t = useTranslations('components.courses.course-details');
 
+	const handlePaymentWithSlug = handlePayment.bind(null, slug);
+
 	return (
-		<Card className="mx-auto max-w-2xl lg:sticky lg:top-4 lg:max-w-none">
+		<Card className="mx-auto max-w-2xl lg:sticky lg:top-20 lg:max-w-none">
 			<header className="aspect-h-9 aspect-w-16 relative overflow-hidden rounded-t-lg bg-slate-300 dark:bg-slate-800">
 				<BlurredImage
 					src={imageUrl || ''}
@@ -34,9 +38,9 @@ export const CoursePurchaseCard = ({ course: { title, price, imageUrl } }: Props
 				</p>
 			</CardContent>
 			<CardFooter className="flex flex-col space-y-4 px-4 py-6">
-				<Button size="lg" className="w-full">
-					{t('buyBtn')}
-				</Button>
+				<form action={handlePaymentWithSlug} className="w-full px-0">
+					<ActionButton className="w-full">{t('buyBtn')}</ActionButton>
+				</form>
 				<Button variant="outline" size="lg" className="w-full">
 					{t('freeChapterBtn')}
 				</Button>
