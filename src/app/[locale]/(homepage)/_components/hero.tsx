@@ -5,13 +5,13 @@ import { useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/button';
 
-import hero from '../assets/hero.webp';
+import hero from '/public/images/hero.webp';
 
 export const Hero = () => {
 	const t = useTranslations('components.homepage.hero');
 
 	return (
-		<section className="relative isolate flex h-screen w-screen items-center justify-center overflow-hidden pt-14">
+		<section className="relative -top-[72px] isolate flex h-screen w-screen items-center justify-center overflow-hidden pt-14">
 			<NextImage
 				src={hero}
 				alt={t('bgImageAlt')}

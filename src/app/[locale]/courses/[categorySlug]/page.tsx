@@ -6,8 +6,8 @@ import { unstable_setRequestLocale } from 'next-intl/server';
 import { db } from '@/lib/db';
 import { type Locale, locales } from '@/lib/navigation';
 
-import { CategorySelect, CategorySelectSkeleton } from '../components/category-select';
-import { CoursesList, CoursesListSkeleton } from '../components/courses-list';
+import { CategorySelect } from '../_components/category-select';
+import { CoursesList, CoursesListSkeleton } from '../_components/courses-list';
 
 export const dynamicParams = false;
 
@@ -40,17 +40,10 @@ export default function CoursesPage({
 
 	return (
 		<>
-			<div className="mb-6 flex items-center justify-between">
-				<h1 id="courses-heading" className="text-3xl font-semibold tracking-tight">
-					{t(`categories.${categorySlug}`)}
-				</h1>
-				<Suspense fallback={<CategorySelectSkeleton />}>
-					<CategorySelect />
-				</Suspense>
-			</div>
-			<p className="mb-10 max-w-3xl">{t('description')}</p>
 			<Suspense fallback={<CoursesListSkeleton />}>
-				<CoursesList category={categorySlug} />
+				<CoursesList title={t('availableHeader')} category={categorySlug}>
+					<CategorySelect />
+				</CoursesList>
 			</Suspense>
 		</>
 	);

@@ -90,15 +90,27 @@
 				"allCategories": "Wszystkie kategorie"
 			},
 			"course-card": {
-				"chaptersCount": "Rozdziały",
+				"eloRange": "Ten kurs jest przeznaczony dla szachistów z rankingiem FIDE w przybliżeniu między {minElo} a {maxElo}",
 				"learnMore": "Dowiedz się więcej",
 				"free": "Darmowy"
+			},
+			"courses-list": {
+				"allPurchased": "Wygląda na to, że kupiłeś wszystkie dostępne kursy. Nie martw się, niedługo pojawią się kolejne!"
 			},
 			"course-details": {
 				"buyBtn": "Kup teraz",
 				"freeChapterBtn": "Obejrzyj darmowy rozdział",
 				"chapterListHeader": "Treść kursu",
-				"free": "Darmowy"
+				"free": "Darmowy",
+				"payment-form": {
+					"header": "Płatność",
+					"payBtn": "Zapłać",
+					"paymentSucceeded": "Płatność zakończona sukcesem!",
+					"paymentProcessing": "Twoja płatność jest przetwarzana.",
+					"paymentFailed": "Twoja płatność nie powiodła się, spróbuj ponownie.",
+					"somethingWentWrong": "Coś poszło nie tak.",
+					"unexpectedError": "Wystąpił nieoczekiwany błąd."
+				}
 			}
 		},
 		"shared": {
@@ -113,12 +125,20 @@
 	},
 	"pages": {
 		"courses": {
-			"header": "Kursy",
+			"mainHeader": "Kursy",
+			"availableHeader": "Czego się teraz nauczysz?",
+			"purchasedHeader": "Kontynuuj naukę",
 			"description": "Niezależnie od tego, czy dopiero zaczynasz, czy chcesz doskonalić swoje umiejętności, moje wciągające lekcje poprowadzą Cię przez strategie i taktyki potrzebne do zdominowania szachownicy. Zanurz się w kursach już dziś i podnieś swoją grę na wyższy poziom!",
 			"categories": {
 				"openings": "Debiuty",
 				"tactics": "Taktyka",
 				"strategy": "Strategia"
+			},
+			"checkout/success": {
+				"title": "Sukces!",
+				"thankYou": "Dziękujemy za zakup!",
+				"receiptSent": "Potwierdzenie zostało wysłane na Twój adres email.",
+				"startLearning": "Rozpocznij naukę"
 			}
 		}
 	}

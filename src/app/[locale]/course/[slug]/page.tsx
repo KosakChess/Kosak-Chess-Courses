@@ -5,7 +5,7 @@ import { unstable_setRequestLocale } from 'next-intl/server';
 import { db } from '@/lib/db';
 import { locales } from '@/lib/navigation';
 
-import { CourseDetails, CourseDetailsSkeleton } from './components/course-details';
+import { CourseDetails, CourseDetailsSkeleton } from './_components/course-details';
 
 export const dynamicParams = false;
 
@@ -26,10 +26,8 @@ export default function CoursePage({ params }: { params: { locale: string; slug:
 	unstable_setRequestLocale(params.locale);
 
 	return (
-		<div className="mt-20 lg:mt-28">
-			<Suspense fallback={<CourseDetailsSkeleton />}>
-				<CourseDetails slug={params.slug} />
-			</Suspense>
-		</div>
+		<Suspense fallback={<CourseDetailsSkeleton />}>
+			<CourseDetails slug={params.slug} />
+		</Suspense>
 	);
 }

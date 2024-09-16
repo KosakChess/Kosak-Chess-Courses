@@ -21,7 +21,7 @@ export const Progress = ({ percentage, variant }: Props) => {
 				aria-valuemax={100}
 				aria-valuenow={percentage}
 				role="progressbar"
-				className="h-2.5 w-full rounded-full bg-secondary"
+				className="h-2.5 w-full rounded-full bg-slate-200 dark:bg-secondary"
 			>
 				<div
 					className={cn(

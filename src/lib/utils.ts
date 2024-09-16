@@ -33,3 +33,16 @@ export const secondsToHours = (seconds: number, format: TimeFormat = 'short') =>
 
 	return `${hours}h ${minutes}m`;
 };
+
+type PromiseToTupleResult<T> = [Error, null] | [null, Awaited<T>];
+export const unpackPromise = async <T extends Promise<unknown>>(
+	promise: T,
+): Promise<PromiseToTupleResult<T>> => {
+	try {
+		const result = await promise;
+		return [null, result];
+	} catch (maybeError) {
+		const error = maybeError instanceof Error ? maybeError : new Error(String(maybeError));
+		return [error, null];
+	}
+};

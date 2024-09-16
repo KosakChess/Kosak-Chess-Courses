@@ -6,7 +6,7 @@ export const Features = () => {
 	const t = useTranslations('components.homepage.features');
 
 	return (
-		<section className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8 lg:py-32">
+		<section className="mx-auto -mt-[72px] max-w-7xl px-6 py-16 sm:py-24 lg:px-8 lg:py-32">
 			<div className="mx-auto max-w-2xl lg:text-center">
 				<h2 className="text-base font-semibold leading-7 text-primary">{t('header')}</h2>
 				<p className="mt-2 text-3xl font-bold tracking-tight text-headings sm:text-4xl">

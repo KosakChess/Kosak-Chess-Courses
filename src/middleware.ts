@@ -4,7 +4,12 @@ import createMiddleware from 'next-intl/middleware';
 
 import { defaultLocale, localePrefix, locales } from './lib/navigation';
 
-const protectedRoutes = createRouteMatcher(['/:locale/checkout', '/:locale/profile']);
+const protectedRoutes = createRouteMatcher([
+	'/learn(.*)',
+	'/course/:slug/checkout',
+	'/course/:slug/checkout/success',
+	'/profile',
+]);
 
 const intlMiddleware = createMiddleware({
 	locales,
@@ -13,18 +18,16 @@ const intlMiddleware = createMiddleware({
 });
 
 export default clerkMiddleware((auth, req) => {
-	if (protectedRoutes(req)) {
-		auth().protect();
+	const { userId } = auth();
+
+	if (protectedRoutes(req) && !userId) {
+		return auth().redirectToSignIn();
 	}
 
 	return intlMiddleware(req);
 });
 
 export const config = {
-	matcher: [
-		// Skip Next.js internals and all static files, unless found in search params
-		'/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-		// Always run for API routes
-		'/(api|trpc)(.*)',
-	],
+	// Skip all paths that should not be internationalized
+	matcher: ['/((?!api|_next|.*\\..*).*)'],
 };

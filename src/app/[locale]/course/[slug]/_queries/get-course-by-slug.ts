@@ -10,6 +10,7 @@ export const getCourseBySlug = async (slug: string) => {
 		where: { isPublished: true, slug },
 		select: {
 			id: true,
+			slug: true,
 			imageUrl: true,
 			category: {
 				select: {
@@ -65,6 +66,7 @@ export const getCourseBySlug = async (slug: string) => {
 
 	return {
 		id: course.id,
+		slug: course.slug,
 		imageUrl: course.imageUrl,
 		title: course.translations[0]?.title,
 		description: course.translations[0]?.description,
