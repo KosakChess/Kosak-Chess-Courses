@@ -95,7 +95,7 @@
 				"free": "Free"
 			},
 			"courses-list": {
-				"availableCoursesTitle": "Available Courses"
+				"allPurchased": "It looks like you've purchased all the available courses. Don't worry, more will be coming soon!"
 			},
 			"course-details": {
 				"buyBtn": "Buy Now",

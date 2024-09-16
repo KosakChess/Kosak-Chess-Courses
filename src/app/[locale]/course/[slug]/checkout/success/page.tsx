@@ -1,7 +1,6 @@
 import { CheckCircle } from 'lucide-react';
 
-import { useTranslations } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 
 import { Button } from '@/components/ui/button';
 import { type Locale, redirect } from '@/lib/navigation';
@@ -19,7 +18,7 @@ interface Props {
 
 export default async function CheckoutSuccessPage({ params, searchParams }: Props) {
 	unstable_setRequestLocale(params.locale);
-	const t = useTranslations('pages.courses.checkout/success');
+	const t = await getTranslations('pages.courses.checkout/success');
 
 	if (!process.env.STRIPE_SECRET_KEY) {
 		throw new Error('Stripe secret key not set');
