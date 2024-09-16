@@ -5,8 +5,8 @@ import { unstable_setRequestLocale } from 'next-intl/server';
 
 import { type PageProps } from '@/types';
 
-import { CategorySelect } from './components/category-select';
-import { CoursesList, CoursesListSkeleton } from './components/courses-list';
+import { CategorySelect } from './_components/category-select';
+import { CoursesList, CoursesListSkeleton } from './_components/courses-list';
 
 export default function CoursesPage({ params }: PageProps) {
 	unstable_setRequestLocale(params.locale);

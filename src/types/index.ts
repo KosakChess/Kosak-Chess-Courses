@@ -1,4 +1,4 @@
-import { type getCourses } from '@/app/[locale]/courses/queries/get-courses';
+import { type getCourses } from '@/app/[locale]/courses/_queries/get-courses';
 import { type Locale } from '@/lib/navigation';
 
 export interface PageProps {

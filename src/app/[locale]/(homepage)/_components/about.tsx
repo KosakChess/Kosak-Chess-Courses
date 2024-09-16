@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/button';
 
-import about from '../assets/about.png';
+import about from '/public/images/about.png';
 
 export const About = () => {
 	const t = useTranslations('components.homepage.about');

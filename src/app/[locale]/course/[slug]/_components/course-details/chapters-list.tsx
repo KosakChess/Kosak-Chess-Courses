@@ -11,7 +11,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { secondsToHours } from '@/lib/utils';
 
-import { type getCourseBySlug } from '../../queries/get-course-by-slug';
+import { type getCourseBySlug } from '../../_queries/get-course-by-slug';
 
 interface Props {
 	chapters: Awaited<ReturnType<typeof getCourseBySlug>>['chapters'];

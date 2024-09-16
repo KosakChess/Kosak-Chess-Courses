@@ -3,7 +3,7 @@ import { getTranslations } from 'next-intl/server';
 
 import { SelectWithLinks } from '@/components/shared/select-with-links';
 
-import { getCategories } from '../queries/get-categories';
+import { getCategories } from '../_queries/get-categories';
 
 export const CategorySelect = async () => {
 	const t = await getTranslations('components.courses.category-select');

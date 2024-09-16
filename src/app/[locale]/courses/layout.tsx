@@ -5,7 +5,7 @@ import { unstable_setRequestLocale } from 'next-intl/server';
 
 import { type LayoutProps } from '@/types';
 
-import { CoursesList, CoursesListSkeleton } from './components/courses-list';
+import { CoursesList, CoursesListSkeleton } from './_components/courses-list';
 
 export default function CoursesLayout({ children, params: { locale } }: LayoutProps) {
 	unstable_setRequestLocale(locale);

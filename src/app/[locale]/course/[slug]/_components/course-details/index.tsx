@@ -5,7 +5,7 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Skeleton } from '@/components/ui/skeleton';
 
-import { getCourseBySlug } from '../../queries/get-course-by-slug';
+import { getCourseBySlug } from '../../_queries/get-course-by-slug';
 
 import { ChaptersList } from './chapters-list';
 import { CoursePurchaseCard } from './course-purchase-card';

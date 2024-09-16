@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/button';
 
-import hero from '../assets/hero.webp';
+import hero from '/public/images/hero.webp';
 
 export const Hero = () => {
 	const t = useTranslations('components.homepage.hero');

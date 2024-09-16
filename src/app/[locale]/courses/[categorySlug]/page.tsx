@@ -6,8 +6,8 @@ import { unstable_setRequestLocale } from 'next-intl/server';
 import { db } from '@/lib/db';
 import { type Locale, locales } from '@/lib/navigation';
 
-import { CategorySelect } from '../components/category-select';
-import { CoursesList, CoursesListSkeleton } from '../components/courses-list';
+import { CategorySelect } from '../_components/category-select';
+import { CoursesList, CoursesListSkeleton } from '../_components/courses-list';
 
 export const dynamicParams = false;
 

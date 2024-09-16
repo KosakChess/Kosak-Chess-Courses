@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import { type Locale } from '@/lib/navigation';
 import { formatPrice } from '@/lib/utils';
 
-import { useCheckout } from '../hooks/useCheckout';
+import { useCheckout } from '../_hooks/useCheckout';
 
 interface Props {
 	course: {

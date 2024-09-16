@@ -6,8 +6,8 @@ import { getTranslations } from 'next-intl/server';
 import { Skeleton } from '@/components/ui/skeleton';
 import { type Course } from '@/types';
 
-import { getCourses } from '../queries/get-courses';
-import { getPurchasedCourses } from '../queries/get-purchased-courses';
+import { getCourses } from '../_queries/get-courses';
+import { getPurchasedCourses } from '../_queries/get-purchased-courses';
 
 import { CategorySelectSkeleton } from './category-select';
 import { CourseCard } from './course-card';

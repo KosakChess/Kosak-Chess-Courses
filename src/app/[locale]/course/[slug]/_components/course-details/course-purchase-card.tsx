@@ -7,8 +7,8 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { type Locale } from '@/lib/navigation';
 import { formatPrice } from '@/lib/utils';
 
-import { handlePayment } from '../../actions/handle-payment';
-import { type getCourseBySlug } from '../../queries/get-course-by-slug';
+import { handlePayment } from '../../_actions/handle-payment';
+import { type getCourseBySlug } from '../../_queries/get-course-by-slug';
 
 interface Props {
 	course: Awaited<ReturnType<typeof getCourseBySlug>>;

@@ -61,7 +61,7 @@ export const useCheckout = () => {
 		const { error } = await stripe.confirmPayment({
 			elements,
 			confirmParams: {
-				return_url: `${process.env.NEXT_PUBLIC_URL}/course/${params?.slug}/checkout/success?intent_id=${intentId}`,
+				return_url: `${window.location.origin}/course/${params?.slug}/checkout/success?intent_id=${intentId}`,
 			},
 		});
 

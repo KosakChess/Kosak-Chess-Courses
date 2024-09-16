@@ -5,7 +5,7 @@ import { unstable_setRequestLocale } from 'next-intl/server';
 import { db } from '@/lib/db';
 import { locales } from '@/lib/navigation';
 
-import { CourseDetails, CourseDetailsSkeleton } from './components/course-details';
+import { CourseDetails, CourseDetailsSkeleton } from './_components/course-details';
 
 export const dynamicParams = false;
 
