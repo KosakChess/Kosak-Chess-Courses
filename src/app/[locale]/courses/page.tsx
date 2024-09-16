@@ -5,7 +5,7 @@ import { unstable_setRequestLocale } from 'next-intl/server';
 
 import { type PageProps } from '@/types';
 
-import { CategorySelect, CategorySelectSkeleton } from './components/category-select';
+import { CategorySelect } from './components/category-select';
 import { CoursesList, CoursesListSkeleton } from './components/courses-list';
 
 export default function CoursesPage({ params }: PageProps) {
@@ -15,9 +15,7 @@ export default function CoursesPage({ params }: PageProps) {
 	return (
 		<Suspense fallback={<CoursesListSkeleton />}>
 			<CoursesList title={t('availableHeader')}>
-				<Suspense fallback={<CategorySelectSkeleton />}>
-					<CategorySelect />
-				</Suspense>
+				<CategorySelect />
 			</CoursesList>
 		</Suspense>
 	);

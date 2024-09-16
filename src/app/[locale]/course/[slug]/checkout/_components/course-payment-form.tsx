@@ -46,7 +46,7 @@ export const CoursePaymentForm = ({ course }: Props) => {
 				/>
 				<div className="ml-4">
 					<h2 className="text-lg font-semibold">{title}</h2>
-					<p className="text-slate-600">{formatPrice(price / 100, locale)}</p>
+					<p>{formatPrice(price / 100, locale)}</p>
 				</div>
 			</div>
 
@@ -81,7 +81,11 @@ export const CoursePaymentForm = ({ course }: Props) => {
 					</Button>
 				</div>
 
-				{message && <p id="payment-message">{message}</p>}
+				{message && (
+					<p id="payment-message" className="text-center text-destructive">
+						{message}
+					</p>
+				)}
 			</form>
 		</section>
 	);

@@ -9,6 +9,7 @@ import { type Course } from '@/types';
 import { getCourses } from '../queries/get-courses';
 import { getPurchasedCourses } from '../queries/get-purchased-courses';
 
+import { CategorySelectSkeleton } from './category-select';
 import { CourseCard } from './course-card';
 
 interface Props {
@@ -29,7 +30,9 @@ export const CoursesList = async ({ title, category, purchased, children }: Prop
 		}
 
 		return (
-			<h2 className="text-headings/90 mt-8 text-center text-xl font-medium">{t('allPurchased')}</h2>
+			<h2 className="text-headings/90 mx-auto mt-12 max-w-xl text-center text-xl font-medium">
+				{t('allPurchased')}
+			</h2>
 		);
 	}
 
@@ -63,31 +66,37 @@ export const CoursesListSkeleton = () => {
 	const t = useTranslations('components.shared.skeletons');
 
 	return (
-		<div
-			aria-busy
-			aria-label={t('ariaLabel')}
-			role="status"
-			className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8"
-		>
-			<span className="sr-only">{t('loading')}</span>
-			{Array.from({ length: 3 }).map((_, index) => (
-				<div
-					key={index}
-					className="group relative overflow-hidden rounded-lg border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800/80"
-				>
-					<div className="animate-pulse">
-						<Skeleton className="h-48" />
-						<div className="p-4">
-							<Skeleton className="mb-2 h-6 w-3/4" />
-							<Skeleton className="mb-4 h-4 w-1/2" />
-							<div className="flex justify-between">
-								<Skeleton className="h-4 w-1/3" />
-								<Skeleton className="h-6 w-16" />
+		<section>
+			<div className="mb-10 flex flex-col items-center gap-y-6 sm:flex-row sm:justify-between">
+				<Skeleton className="h-9 w-48" />
+				<CategorySelectSkeleton />
+			</div>
+			<div
+				aria-busy
+				aria-label={t('ariaLabel')}
+				role="status"
+				className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8"
+			>
+				<span className="sr-only">{t('loading')}</span>
+				{Array.from({ length: 3 }).map((_, index) => (
+					<div
+						key={index}
+						className="group relative overflow-hidden rounded-lg border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800/80"
+					>
+						<div className="animate-pulse">
+							<Skeleton className="h-48" />
+							<div className="p-4">
+								<Skeleton className="mb-2 h-6 w-3/4" />
+								<Skeleton className="mb-4 h-4 w-1/2" />
+								<div className="flex justify-between">
+									<Skeleton className="h-4 w-1/3" />
+									<Skeleton className="h-6 w-16" />
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			))}
-		</div>
+				))}
+			</div>
+		</section>
 	);
 };

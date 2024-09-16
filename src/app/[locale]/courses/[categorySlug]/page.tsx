@@ -6,7 +6,7 @@ import { unstable_setRequestLocale } from 'next-intl/server';
 import { db } from '@/lib/db';
 import { type Locale, locales } from '@/lib/navigation';
 
-import { CategorySelect, CategorySelectSkeleton } from '../components/category-select';
+import { CategorySelect } from '../components/category-select';
 import { CoursesList, CoursesListSkeleton } from '../components/courses-list';
 
 export const dynamicParams = false;
@@ -42,9 +42,7 @@ export default function CoursesPage({
 		<>
 			<Suspense fallback={<CoursesListSkeleton />}>
 				<CoursesList title={t('availableHeader')} category={categorySlug}>
-					<Suspense fallback={<CategorySelectSkeleton />}>
-						<CategorySelect />
-					</Suspense>
+					<CategorySelect />
 				</CoursesList>
 			</Suspense>
 		</>
