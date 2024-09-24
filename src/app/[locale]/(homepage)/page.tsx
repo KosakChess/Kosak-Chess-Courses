@@ -1,5 +1,6 @@
 import { unstable_setRequestLocale } from 'next-intl/server';
 
+import { VideoPlayer } from '@/components/video-player';
 import { type PageProps } from '@/types';
 
 import { About } from './_components/about';
@@ -12,6 +13,9 @@ export default function HomePage({ params }: PageProps) {
 	return (
 		<>
 			<Hero />
+			<div className="mx-auto max-w-4xl py-40">
+				<VideoPlayer />
+			</div>
 			<Features />
 			<About />
 		</>
