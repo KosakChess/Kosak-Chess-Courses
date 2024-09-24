@@ -29,6 +29,9 @@
 		--destructive: #ff0000;
 		--destructive-foreground: #f8fafc;
 
+		--success: #16a34a;
+		--success-foreground: #f8fafc;
+
 		--border: #e2e8f0;
 		--input: #e2e8f0;
 		--ring: #1b6ff5;
@@ -59,6 +62,9 @@
 
 		--destructive: #811d1d;
 		--destructive-foreground: #f8fafc;
+
+		--success: #22c55e;
+		--success-foreground: #f8fafc;
 
 		--border: #1d283a;
 		--input: #1d283a;
