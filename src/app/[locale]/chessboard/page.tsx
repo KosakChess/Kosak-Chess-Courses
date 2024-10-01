@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react';
 import { Chessboard } from 'react-chessboard';
 import { Chess, type Move, type Square } from 'chess.js';
 
-import next from 'next';
-
 export default function PlayWithLoadedPGN() {
 	// `game` is used for storing the PGN and move history
 	const [game, setGame] = useState(new Chess());
@@ -67,6 +65,7 @@ As we will see later, the endgame Queen and King versus advance Bishop-pawn and 
 		tmpGame.load(startingFen);
 		setComment(getCommentForFen(startingFen));
 		setChessboardGame(tmpGame);
+		setMoveMark('!');
 	}, []); // Only load PGN once on mount
 
 	function makeAMove(
@@ -90,7 +89,7 @@ As we will see later, the endgame Queen and King versus advance Bishop-pawn and 
 				setComment(getCommentForFen(getFenForMoveNumber(myMoveNumber + 1, false)));
 				setMyMoveNumber(myMoveNumber + 2);
 			} else {
-				alert('Invalid move!');
+				alert('Not the right move!');
 			}
 			return result;
 		} catch (e) {
