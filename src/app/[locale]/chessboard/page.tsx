@@ -88,6 +88,8 @@ As we will see later, the endgame Queen and King versus advance Bishop-pawn and 
 
 				setComment(getCommentForFen(getFenForMoveNumber(myMoveNumber + 1, false)));
 				setMyMoveNumber(myMoveNumber + 2);
+
+				if (myMoveNumber >= game.history().length - 1) alert('You win!');
 			} else {
 				alert('Not the right move!');
 			}
@@ -119,16 +121,14 @@ As we will see later, the endgame Queen and King versus advance Bishop-pawn and 
 				return history[moveNumber].after;
 			}
 		}
-		alert('Puzzle solved!');
 		const tmpGame = new Chess();
 		return tmpGame.fen(); // Return FEN for the starting position
 	}
 
 	function getCommentForFen(myFen: string): string {
 		const comments = game.getComments();
-		console.log('AAA MYFEN', myFen);
 		for (let i = 0; i < comments.length; i++) {
-			console.log('comments', i, comments[i]);
+			// console.log('comments', i, comments[i]);
 			if (comments[i]?.fen === myFen) {
 				const tmp = comments[i]?.comment;
 				if (tmp === undefined) {
