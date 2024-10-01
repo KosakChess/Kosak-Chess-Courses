@@ -69,8 +69,8 @@ As we will see later, the endgame Queen and King versus advance Bishop-pawn and 
 			// if this is the correct move (from the PGN), update the chessboard state. otherwise, alert the user "Invalid Move"
 			console.log('gamecopy fen:', myMoveNumber, ' ', gameCopy.fen());
 			if (gameCopy.fen() === getFenForMoveNumber(myMoveNumber, false)) {
-				setChessboardGame(new Chess(getFenForMoveNumber(myMoveNumber, false)));
-				setMyMoveNumber(myMoveNumber + 1);
+				setChessboardGame(new Chess(getFenForMoveNumber(myMoveNumber + 1, false)));
+				setMyMoveNumber(myMoveNumber + 2);
 			} else {
 				alert('Invalid move!');
 			}
