@@ -63,9 +63,9 @@ As we will see later, the endgame Queen and King versus advance Bishop-pawn and 
 	function makeAMove(
 		move: string | { from: Square; to: Square; promotion: string | undefined },
 	): Move | null {
-		const gameCopy = new Chess(chessboardGame.fen()); // Create a copy of the current chessboard game
+		const gameCopy = new Chess(chessboardGame.fen());
 		try {
-			const result = gameCopy.move(move); // Make the move
+			const result = gameCopy.move(move);
 			// if this is the correct move (from the PGN), update the chessboard state. otherwise, alert the user "Invalid Move"
 			console.log('gamecopy fen:', myMoveNumber, ' ', gameCopy.fen());
 			if (gameCopy.fen() === getFenForMoveNumber(myMoveNumber, false)) {
