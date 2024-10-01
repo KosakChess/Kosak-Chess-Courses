@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { Chessboard } from 'react-chessboard';
 import { Chess, type Move, type Square } from 'chess.js';
 
+import next from 'next';
+
 export default function PlayWithLoadedPGN() {
 	// `game` is used for storing the PGN and move history
 	const [game, setGame] = useState(new Chess());
@@ -11,6 +13,10 @@ export default function PlayWithLoadedPGN() {
 	const [chessboardGame, setChessboardGame] = useState(new Chess());
 
 	const [myMoveNumber, setMyMoveNumber] = useState(0);
+
+	const [comment, setComment] = useState('default comment');
+
+	const [moveMark, setMoveMark] = useState('default move mark');
 
 	// Example PGN to load
 	const pgn = `[Event "Endgames: Introduction"]
@@ -56,7 +62,10 @@ As we will see later, the endgame Queen and King versus advance Bishop-pawn and 
 		setGame(game);
 		console.log('game history: ', game.history({ verbose: true }));
 		const tmpGame = new Chess();
-		tmpGame.load(getFenForMoveNumber(myMoveNumber, true));
+
+		const startingFen = getFenForMoveNumber(myMoveNumber, true);
+		tmpGame.load(startingFen);
+		setComment(getCommentForFen(startingFen));
 		setChessboardGame(tmpGame);
 	}, []); // Only load PGN once on mount
 
@@ -67,9 +76,18 @@ As we will see later, the endgame Queen and King versus advance Bishop-pawn and 
 		try {
 			const result = gameCopy.move(move);
 			// if this is the correct move (from the PGN), update the chessboard state. otherwise, alert the user "Invalid Move"
-			console.log('gamecopy fen:', myMoveNumber, ' ', gameCopy.fen());
+			// console.log('gamecopy fen:', myMoveNumber, ' ', gameCopy.fen());
 			if (gameCopy.fen() === getFenForMoveNumber(myMoveNumber, false)) {
 				setChessboardGame(new Chess(getFenForMoveNumber(myMoveNumber + 1, false)));
+
+				//COMMENTS
+				//comment to the move white just made.
+				const whiteComment = getCommentForFen(getFenForMoveNumber(myMoveNumber + 1, true));
+				if (whiteComment != '') {
+					alert(whiteComment);
+				}
+
+				setComment(getCommentForFen(getFenForMoveNumber(myMoveNumber + 1, false)));
 				setMyMoveNumber(myMoveNumber + 2);
 			} else {
 				alert('Invalid move!');
@@ -91,24 +109,37 @@ As we will see later, the endgame Queen and King versus advance Bishop-pawn and 
 		return !!result;
 	}
 
-	function getCurrentMoveNumber(): number {
-		return chessboardGame.moveNumber(); // Get the current move number from chessboardGame
-	}
-
 	function getFenForMoveNumber(moveNumber: number, isBefore: boolean): string {
 		const history = game.history({ verbose: true });
 		if (history[moveNumber]) {
 			if (isBefore) {
-				console.log('white to move: ', myMoveNumber, ' ', history[moveNumber].before);
+				// console.log('white to move: ', myMoveNumber, ' ', history[moveNumber].before);
 				return history[moveNumber].before; // Return FEN before the move was made
 			} else {
-				console.log('black to move: ', myMoveNumber, ' ', history[moveNumber].after);
+				// console.log('black to move: ', myMoveNumber, ' ', history[moveNumber].after);
 				return history[moveNumber].after;
 			}
 		}
 		alert('Puzzle solved!');
 		const tmpGame = new Chess();
 		return tmpGame.fen(); // Return FEN for the starting position
+	}
+
+	function getCommentForFen(myFen: string): string {
+		const comments = game.getComments();
+		console.log('AAA MYFEN', myFen);
+		for (let i = 0; i < comments.length; i++) {
+			console.log('comments', i, comments[i]);
+			if (comments[i]?.fen === myFen) {
+				const tmp = comments[i]?.comment;
+				if (tmp === undefined) {
+					return '';
+				} else {
+					return tmp;
+				}
+			}
+		}
+		return '';
 	}
 
 	const boardStyle = {
@@ -119,11 +150,37 @@ As we will see later, the endgame Queen and King versus advance Bishop-pawn and 
 		marginRight: 'auto',
 	};
 
+	const rightPaneStyle = {
+		display: 'flex',
+		flexDirection: 'column' as const,
+		width: '40%',
+		marginTop: '10%',
+		marginRight: '10%',
+	};
+
+	const displayBoxStyle = {
+		width: '100%',
+		height: '300px',
+		fontSize: '14px',
+		overflowY: 'auto' as const,
+		backgroundColor: '#f0f0f0',
+		padding: '10px',
+	};
+
 	return (
-		<div style={boardStyle}>
-			<Chessboard position={chessboardGame.fen()} onPieceDrop={onDrop} />
-			<div>Move Number: {getCurrentMoveNumber()}</div>
-			<div>FEN for Current Move: {chessboardGame.fen()}</div>
+		<div style={{ display: 'flex' }}>
+			{/* Chessboard */}
+			<div style={boardStyle}>
+				<Chessboard position={chessboardGame.fen()} onPieceDrop={onDrop} />
+				<div>Move Number: {chessboardGame.moveNumber()}</div>
+				<div>FEN for Current Move: {chessboardGame.fen()}</div>
+			</div>
+
+			{/* Right pane with input box and large display box */}
+			<div style={rightPaneStyle}>
+				<text>{moveMark}</text>
+				<div style={displayBoxStyle}>{comment}</div>
+			</div>
 		</div>
 	);
 }
