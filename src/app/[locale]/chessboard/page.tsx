@@ -106,6 +106,7 @@ As we will see later, the endgame Queen and King versus advance Bishop-pawn and 
 				return history[moveNumber].after;
 			}
 		}
+		alert('Puzzle solved!');
 		const tmpGame = new Chess();
 		return tmpGame.fen(); // Return FEN for the starting position
 	}
