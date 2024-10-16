@@ -98,6 +98,8 @@
 				"allPurchased": "Wygląda na to, że kupiłeś wszystkie dostępne kursy. Nie martw się, niedługo pojawią się kolejne!"
 			},
 			"course-details": {
+				"coursePurchased": "Kurs zakupiony",
+				"goToCourseBtn": "Przejdź do kursu",
 				"buyBtn": "Kup teraz",
 				"freeChapterBtn": "Obejrzyj darmowy rozdział",
 				"chapterListHeader": "Treść kursu",

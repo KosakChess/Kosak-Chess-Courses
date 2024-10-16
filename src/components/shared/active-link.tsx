@@ -4,9 +4,8 @@ import { type UrlObject } from 'url';
 
 import { type Route } from 'next';
 import { type LinkProps } from 'next/link';
-import { usePathname } from 'next/navigation';
 
-import { Link, type Locale } from '@/lib/navigation';
+import { Link, type Locale, usePathname } from '@/lib/navigation';
 import { cn } from '@/lib/utils';
 
 interface Props<T extends string> extends LinkProps<T> {

@@ -27,7 +27,7 @@ export default async function CheckoutPage({ params, searchParams }: Props) {
 	const messages = await getMessages();
 	unstable_setRequestLocale(locale);
 
-	const course = await db.course.findFirst({
+	const course = await db.course.findUnique({
 		where: {
 			slug: slug,
 		},

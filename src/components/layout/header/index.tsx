@@ -4,14 +4,13 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
 import { BrandLogo } from '@/components/shared/brand-logo';
-import { checkUser } from '@/lib/check-user';
+import { checkUser } from '@/queries/check-user';
 
 import { HeaderActions } from './header-actions';
 import { Nav } from './nav';
 
 export const Header = async () => {
-	const messages = await getMessages();
-	await checkUser();
+	const [messages, _] = await Promise.all([getMessages(), checkUser()]);
 
 	return (
 		<NextIntlClientProvider messages={pick(messages, 'components.layout.header')}>

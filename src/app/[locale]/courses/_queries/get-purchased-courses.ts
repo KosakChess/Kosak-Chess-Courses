@@ -5,8 +5,10 @@ import { type Locale } from '@/lib/navigation';
 import { getCurrentUser } from '@/queries/get-current-user';
 
 export const getPurchasedCourses = async () => {
-	const currentUser = await getCurrentUser();
-	const locale = (await getLocale()) as Locale;
+	const [currentUser, locale] = await Promise.all([
+		getCurrentUser(),
+		getLocale().then((l) => l as Locale),
+	]);
 
 	if (!currentUser) {
 		return [];

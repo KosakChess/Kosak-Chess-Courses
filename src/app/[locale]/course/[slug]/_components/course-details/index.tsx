@@ -1,13 +1,14 @@
 import { useTranslations } from 'next-intl';
 
+import { ChaptersList } from '@/components/shared/chapters-list';
 import { Markdown } from '@/components/shared/markdown';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Skeleton } from '@/components/ui/skeleton';
+import { hasPurchasedCourse } from '@/queries/has-purchased-course';
 
 import { getCourseBySlug } from '../../_queries/get-course-by-slug';
 
-import { ChaptersList } from './chapters-list';
 import { CoursePurchaseCard } from './course-purchase-card';
 
 interface Props {
@@ -16,17 +17,20 @@ interface Props {
 
 export const CourseDetails = async ({ slug }: Props) => {
 	const course = await getCourseBySlug(slug);
+	const purchasedCourse = await hasPurchasedCourse({ courseId: course.id });
 
 	return (
 		<section className="container mx-auto mt-12 px-4 py-8">
 			<div className="flex flex-col lg:grid lg:grid-cols-3 lg:gap-8">
-				<article className="order-2 space-y-8 lg:order-1 lg:col-span-2">
-					<Markdown source={course.description || ''} />
+				<div className="order-2 space-y-8 lg:order-1 lg:col-span-2">
+					<Markdown source={course.description} />
 					<Separator />
-					<ChaptersList chapters={course.chapters} />
-				</article>
+					<section aria-labelledby="chapters-list-header" className="mx-auto max-w-2xl">
+						<ChaptersList chapters={course.chapters} courseSlug={''} />
+					</section>
+				</div>
 				<aside className="order-1 mb-8 lg:order-2 lg:mb-0">
-					<CoursePurchaseCard course={course} />
+					<CoursePurchaseCard course={course} hasPurchasedCourse={purchasedCourse} />
 				</aside>
 			</div>
 		</section>

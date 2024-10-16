@@ -1,9 +1,9 @@
 import { ArrowRight } from 'lucide-react';
 
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
 import { Progress } from '@/components/shared/progress';
+import { Link } from '@/lib/navigation';
 import { type Course } from '@/types';
 
 import { CourseCardDescription } from './course-card-description';

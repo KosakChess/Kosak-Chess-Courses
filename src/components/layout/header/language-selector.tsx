@@ -2,7 +2,6 @@
 
 import { GlobeIcon } from 'lucide-react';
 
-import { usePathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/button';
@@ -13,7 +12,7 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Link, type Locale } from '@/lib/navigation';
+import { Link, type Locale, usePathname } from '@/lib/navigation';
 
 export const LanguageSelector = () => {
 	const t = useTranslations('components.layout.header.LanguageSelector');

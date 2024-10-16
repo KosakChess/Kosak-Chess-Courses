@@ -15,3 +15,5 @@ export type Course = Awaited<ReturnType<typeof getCourses>>[number] & {
 	purchased?: boolean;
 	userProgress?: number;
 };
+
+export type LessonType = 'video' | 'puzzle';

@@ -28,7 +28,8 @@ export const ActionButton = ({
 			})}
 			{...rest}
 		>
-			{pending ? <Loader className="me-2 size-5" aria-hidden /> : children}
+			{pending && <Loader className="me-2 size-5 animate-spin" aria-hidden />}
+			{children}
 		</Button>
 	);
 };

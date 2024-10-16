@@ -29,10 +29,22 @@ export const CoursesList = async ({ title, category, purchased, children }: Prop
 			return null;
 		}
 
+		if (category) {
+			return (
+				<section aria-labelledby={id}>
+					<h2 id={id} className="mb-10 text-3xl font-semibold tracking-tight">
+						{/* {t('noCoursesFound', { category })} */}
+					</h2>
+				</section>
+			);
+		}
+
 		return (
-			<h2 className="text-headings/90 mx-auto mt-12 max-w-xl text-center text-xl font-medium">
-				{t('allPurchased')}
-			</h2>
+			<section aria-labelledby={id}>
+				<h2 className="text-headings/90 mx-auto mt-12 max-w-xl text-center text-xl font-medium">
+					{t('allPurchased')}
+				</h2>
+			</section>
 		);
 	}
 

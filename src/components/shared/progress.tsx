@@ -9,17 +9,18 @@ interface Props {
 
 export const Progress = ({ percentage, variant }: Props) => {
 	const t = useTranslations('components.shared.progress');
+	const roundedPercentage = Math.round(percentage);
 
 	return (
 		<>
 			<div className="mb-1 flex justify-between">
 				<span className="text-headings/90 text-base font-medium">{t('label')}</span>
-				<span className="text-headings/90 text-sm font-medium">{percentage}%</span>
+				<span className="text-headings/90 text-sm font-medium">{roundedPercentage}%</span>
 			</div>
 			<div
 				aria-valuemin={0}
 				aria-valuemax={100}
-				aria-valuenow={percentage}
+				aria-valuenow={roundedPercentage}
 				role="progressbar"
 				className="h-2.5 w-full rounded-full bg-slate-200 dark:bg-secondary"
 			>
@@ -28,7 +29,7 @@ export const Progress = ({ percentage, variant }: Props) => {
 						'h-2.5 rounded-full',
 						variant === 'success' ? 'bg-green-600 dark:bg-green-500' : 'bg-primary',
 					)}
-					style={{ width: `${percentage}%` }}
+					style={{ width: `${roundedPercentage}%` }}
 				></div>
 			</div>
 		</>

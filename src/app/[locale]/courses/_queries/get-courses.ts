@@ -5,8 +5,10 @@ import { type Locale } from '@/lib/navigation';
 import { getCurrentUser } from '@/queries/get-current-user';
 
 export const getCourses = async (category?: string) => {
-	const user = await getCurrentUser();
-	const locale = (await getLocale()) as Locale;
+	const [user, locale] = await Promise.all([
+		getCurrentUser(),
+		getLocale().then((l) => l as Locale),
+	]);
 
 	const courses = await db.course.findMany({
 		where: {
@@ -56,6 +58,9 @@ export const getCourses = async (category?: string) => {
 					},
 				},
 			},
+		},
+		orderBy: {
+			createdAt: 'desc',
 		},
 	});
 

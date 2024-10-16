@@ -6,8 +6,10 @@ import { SelectWithLinks } from '@/components/shared/select-with-links';
 import { getCategories } from '../_queries/get-categories';
 
 export const CategorySelect = async () => {
-	const t = await getTranslations('components.courses.category-select');
-	const categories = await getCategories();
+	const [t, categories] = await Promise.all([
+		getTranslations('components.courses.category-select'),
+		getCategories(),
+	]);
 
 	categories.unshift({ slug: '', translations: [{ name: t('allCategories') }] });
 

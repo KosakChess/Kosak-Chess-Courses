@@ -98,6 +98,8 @@
 				"allPurchased": "It looks like you've purchased all the available courses. Don't worry, more will be coming soon!"
 			},
 			"course-details": {
+				"coursePurchased": "Course Purchased",
+				"goToCourseBtn": "Go to Course",
 				"buyBtn": "Buy Now",
 				"freeChapterBtn": "Watch Free Chapter",
 				"chapterListHeader": "Course Content",
@@ -114,6 +116,11 @@
 			}
 		},
 		"shared": {
+			"chapters-list": {
+				"header": "Course Chapters",
+				"free": "Free",
+				"locked": "You need to purchase the course to unlock this chapter."
+			},
 			"skeletons": {
 				"ariaLabel": "Loading content",
 				"loading": "Loading..."

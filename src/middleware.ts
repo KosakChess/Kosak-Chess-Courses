@@ -1,14 +1,15 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 
+import { NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 
 import { defaultLocale, localePrefix, locales } from './lib/navigation';
 
 const protectedRoutes = createRouteMatcher([
-	'/learn(.*)',
-	'/course/:slug/checkout',
-	'/course/:slug/checkout/success',
-	'/profile',
+	'/:locale/learn(.*)',
+	'/:locale/course/:slug/checkout',
+	'/:locale/course/:slug/checkout/success',
+	'/:locale/user-profile',
 ]);
 
 const intlMiddleware = createMiddleware({
@@ -21,7 +22,8 @@ export default clerkMiddleware((auth, req) => {
 	const { userId } = auth();
 
 	if (protectedRoutes(req) && !userId) {
-		return auth().redirectToSignIn();
+		const signInUrl = new URL('/sign-in', req.url);
+		return NextResponse.redirect(signInUrl);
 	}
 
 	return intlMiddleware(req);

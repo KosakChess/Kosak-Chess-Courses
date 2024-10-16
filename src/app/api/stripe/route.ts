@@ -5,6 +5,7 @@ import { type NextRequest } from 'next/server';
 import { db } from '@/lib/db';
 import { stripe } from '@/lib/stripe';
 import { unpackPromise } from '@/lib/utils';
+import { hasPurchasedCourse } from '@/queries/has-purchased-course';
 
 export async function POST(req: NextRequest): Promise<Response> {
 	if (!process.env.STRIPE_WEBHOOK_SECRET) {
@@ -37,9 +38,7 @@ export async function POST(req: NextRequest): Promise<Response> {
 				return new Response('Missing metadata', { status: 400 });
 			}
 
-			const existingPurchase = await db.purchase.findFirst({
-				where: { userId, courseId },
-			});
+			const existingPurchase = await hasPurchasedCourse({ courseId, userId });
 
 			if (!existingPurchase) {
 				await db.purchase.create({

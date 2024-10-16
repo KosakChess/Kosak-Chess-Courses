@@ -10,14 +10,16 @@ import { stripe } from '@/lib/stripe';
 import { getCurrentUser } from '@/queries/get-current-user';
 
 export const handlePayment = async (courseSlug: string) => {
-	const user = await getCurrentUser();
-	const locale = (await getLocale()) as Locale;
+	const [locale, user] = await Promise.all([
+		getLocale().then((l) => l as Locale),
+		getCurrentUser(),
+	]);
 
 	if (!user) {
 		return redirect('/sign-in');
 	}
 
-	const course = await db.course.findFirst({
+	const course = await db.course.findUnique({
 		where: {
 			slug: courseSlug,
 		},
