@@ -105,6 +105,7 @@ model Chapter {
   lessons       Lesson[] 
   isPublished   Boolean              @default(false)
   isFree        Boolean              @default(false)
+  order         Int
   translations  ChapterTranslation[]
 
   createdAt     DateTime             @default(now())
@@ -135,6 +136,7 @@ model Lesson {
   chapter       Chapter              @relation(fields: [chapterId], references: [id], onDelete: Cascade)
   duration      Int?                 @default(0)
   isPublished   Boolean              @default(false)
+  order         Int
   translations  LessonTranslation[]
   userProgress  UserProgress[]
 

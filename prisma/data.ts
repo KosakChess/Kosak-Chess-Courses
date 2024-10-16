@@ -12,11 +12,12 @@ const generateLessons = (
 	const lessons: Prisma.LessonCreateWithoutChapterInput[] = [];
 
 	for (let i = 1; i <= count; i++) {
-		const duration = Math.floor(Math.random() * (600 - 120 + 1) + 120); // Random duration between 2 and 10 minutes
+		const duration = Math.floor(Math.random() * (600 - 120 + 1) + 120);
 		const videoLesson = i % 2 !== 0;
 		lessons.push({
 			duration,
 			isPublished,
+			order: i,
 			translations: {
 				create: [
 					{
@@ -29,7 +30,7 @@ const generateLessons = (
 					},
 				],
 			},
-			videoUrl: videoLesson ? `https://video-url.com/lesson-${i}` : null,
+			videoUrl: videoLesson ? 'https://files.vidstack.io/sprite-fight/720p.mp4' : null,
 			chessPuzzle: !videoLesson ? `Puzzle for lesson ${i}` : null,
 		});
 	}
@@ -65,6 +66,7 @@ export const initialCourses: Prisma.CourseCreateInput[] = [
 				{
 					isPublished: true,
 					isFree: true,
+					order: 1,
 					translations: {
 						create: [
 							{ locale: Locale.pl, title: 'Pierwszy rozdział' },
@@ -77,6 +79,7 @@ export const initialCourses: Prisma.CourseCreateInput[] = [
 				},
 				{
 					isPublished: true,
+					order: 2,
 					translations: {
 						create: [
 							{ locale: Locale.pl, title: 'Drugi rozdział' },
@@ -117,6 +120,7 @@ export const initialCourses: Prisma.CourseCreateInput[] = [
 				{
 					isPublished: true,
 					isFree: true,
+					order: 1,
 					translations: {
 						create: [
 							{ locale: Locale.pl, title: 'Pierwszy rozdział' },
@@ -129,6 +133,7 @@ export const initialCourses: Prisma.CourseCreateInput[] = [
 				},
 				{
 					isPublished: true,
+					order: 2,
 					translations: {
 						create: [
 							{ locale: Locale.pl, title: 'Drugi rozdział' },
@@ -169,6 +174,7 @@ export const initialCourses: Prisma.CourseCreateInput[] = [
 				{
 					isPublished: true,
 					isFree: true,
+					order: 1,
 					translations: {
 						create: [
 							{ locale: Locale.pl, title: 'Pierwszy rozdział' },
@@ -181,6 +187,7 @@ export const initialCourses: Prisma.CourseCreateInput[] = [
 				},
 				{
 					isPublished: true,
+					order: 2,
 					translations: {
 						create: [
 							{ locale: Locale.pl, title: 'Drugi rozdział' },
